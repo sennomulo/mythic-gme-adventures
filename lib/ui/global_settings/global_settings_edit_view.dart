@@ -70,7 +70,7 @@ class GlobalSettingsEditView extends HookWidget {
     }
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Global Settings',
+      itemTypeLabel: '全局设置',
       canDelete: false,
       onSave: () {
         _settings.allowChooseInLists = allowChooseInLists();
@@ -96,50 +96,50 @@ class GlobalSettingsEditView extends HookWidget {
             BooleanSetting(
               setting: allowChooseInLists,
               text:
-                  'Allow to roll "Choose" in the Characters and Threads lists',
+                  '允许在角色和线索列表中掷出“自选”',
               subtext:
-                  'If unchecked, rolling will always pick an item in the list.',
+                  '若不勾选，掷骰将总是从列表中选取一个条目。',
             ),
 
             // allow unlimited list count
             BooleanSetting(
               withTopPadding: true,
               setting: allowUnlimitedListCount,
-              text: 'Allow unlimited counter in Characters/Threads Lists',
+              text: '允许角色/线索列表中的计数不受限制',
               subtext:
-                  'The rules recommend not having more than'
-                  ' ${GlobalSettingsService.maxNumberOfItemsInList} identical items in a List.'
-                  ' This is enforced unless you check this option.',
+                  '规则建议列表中相同条目不要超过'
+                  ' ${GlobalSettingsService.maxNumberOfItemsInList} 个。'
+                  '除非勾选此选项，否则将强制执行此限制。',
             ),
 
             // hide help buttons
             BooleanSetting(
               withTopPadding: true,
               setting: hideHelpButtons,
-              text: 'Hide Help buttons',
+              text: '隐藏帮助按钮',
               subtext:
-                  'Hides the Help buttons in the application.'
-                  ' You can still access the Help in the Adventure menu.',
+                  '隐藏应用程序中的帮助按钮。'
+                  '你仍可在冒险菜单中访问帮助。',
             ),
 
             // show combat clash
             BooleanSetting(
               withTopPadding: true,
               setting: showCombatClash,
-              text: 'Show Combat Clash toggle',
+              text: '显示“战斗判定”开关',
               subtext:
-                  'Shows the Combat Clash toggle in the Fate Chart.'
-                  ' When Combat Clash is enabled, the Chaos Factor is forced to 5 for Fate Questions,'
-                  ' as per Mythic RPG Narrative Combat from Mythic Magazine Compilation 5.',
+                  '在命运图表中显示“战斗判定”开关。'
+                  '启用战斗判定后，命运问题的混乱因子将强制为 5，'
+                  '依据《Mythic Magazine Compilation 5》中的 Mythic 叙事战斗规则。',
             ),
 
             // show quick physical dice mode
             BooleanSetting(
               withTopPadding: true,
               setting: showQuickPhysicalDiceMode,
-              text: 'Show quick toggle for Physical Dice Mode',
+              text: '显示“实体骰模式”快速开关',
               subtext:
-                  'Shows the Physical Dice Mode toggle in the Fate Chart, for quick access.',
+                  '在命运图表中显示“实体骰模式”开关，便于快速切换。',
             ),
 
             // meaning tables language
@@ -153,7 +153,7 @@ class GlobalSettingsEditView extends HookWidget {
                       requestFocusOnTap: false,
                       width: 250,
                       initialSelection: meaningTablesLanguage(),
-                      label: const Text('Meaning Tables Language'),
+                      label: const Text('意义表语言'),
                       dropdownMenuEntries: languageMenuEntries,
                       onSelected: (value) {
                         meaningTablesLanguage.value = value ?? 'en';
@@ -161,8 +161,8 @@ class GlobalSettingsEditView extends HookWidget {
                     ),
                   ),
                   const SubLabel(
-                    'This applies to the Meaning Tables only,'
-                    ' not the whole application.',
+                    '此设置仅作用于意义表，'
+                    '而非整个应用程序。',
                   ),
                 ],
               ),

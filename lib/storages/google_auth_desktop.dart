@@ -55,10 +55,10 @@ class DesktopGoogleAuthManager extends OAuth2GoogleAuthManager {
     request.response.headers.set('content-type', 'text/plain');
 
     if (params['access_token'] != null) {
-      request.response.writeln('Authenticated! You can close this tab.');
+      request.response.writeln('登录成功！你可以关闭此标签页。');
     } else {
       request.response.writeln(
-        'Authentication failed! You can close this tab.',
+        '登录失败！你可以关闭此标签页。',
       );
     }
 

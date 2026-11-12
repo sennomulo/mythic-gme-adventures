@@ -91,29 +91,29 @@ class AdventureInfoView extends GetView<AdventureInfoController> {
     String details;
     final error = controller.error;
     if (error is LocalStorageException) {
-      details = 'Failed to save "${error.filePath}" locally: ${error.error}';
+      details = '本地保存文件 "${error.filePath}" 时失败：${error.error}';
     } else if (error is RemoteStorageException) {
-      details = 'Failed to save "${error.filePath}" online: ';
+      details = '在线上保存文件 "${error.filePath}" 时失败：';
       if (error is RemoteStorageAuthenticationException) {
         details +=
-            'The authentication is no more valid.\n'
-            'Please go back to the list of adventures and check your online access.';
+            '身份验证已失效。\n'
+            '请返回冒险列表并检查你的线上访问。';
       } else if (error is RemoteStorageNetworkException) {
         details +=
-            '${error.provider} could not be contacted.\n'
-            'Please check your internet access.';
+            '无法连接到 ${error.provider}。\n'
+            '请检查你的网络连接。';
       } else if (error is RemoteStorageOperationException) {
         details +=
-            '${error.provider} refused to save the file:'
-            ' ${error.error}.';
+            '${error.provider} 拒绝保存该文件：'
+            ' ${error.error}。';
       }
     } else {
-      details = 'An unexpected error occurred: $error.';
+      details = '发生意外错误：$error。';
     }
 
     await Dialogs.showAlert(
-      title: 'Save failed',
-      message: 'Failed to save the Adventure.\n\n$details',
+      title: '保存失败',
+      message: '保存冒险失败。\n\n$details',
     );
   }
 }
@@ -143,21 +143,21 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
         MenuItemButton(
           onPressed: () => controller.showIndex(context),
           leadingIcon: const Icon(Icons.arrow_back),
-          child: const Text('Change Adventure'),
+          child: const Text('切换冒险'),
         ),
 
         // adventure settings
         MenuItemButton(
           onPressed: controller.showAdventureSettings,
           leadingIcon: const Icon(Icons.settings_outlined),
-          child: const Text('Adventure Settings'),
+          child: const Text('冒险设置'),
         ),
 
         // global settings
         MenuItemButton(
           onPressed: controller.showGlobalSettings,
           leadingIcon: const Icon(Icons.settings_outlined),
-          child: const Text('Global Settings'),
+          child: const Text('全局设置'),
         ),
 
         // physical dice mode
@@ -173,7 +173,7 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
               ],
             ),
             child: Text(
-              '${isPhysicalDiceModeEnabled ? 'Disable' : 'Enable'} Physical Dice Mode',
+              '${isPhysicalDiceModeEnabled ? 'Disable' : 'Enable'} 实体骰模式',
             ),
           );
         }),
@@ -182,21 +182,21 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
         MenuItemButton(
           onPressed: controller.save,
           leadingIcon: const Icon(Icons.save_outlined),
-          child: const Text('Save'),
+          child: const Text('保存'),
         ),
 
         // backup
         MenuItemButton(
           onPressed: controller.backup,
           leadingIcon: const Icon(Icons.save_alt_outlined),
-          child: const Text('Backup'),
+          child: const Text('备份'),
         ),
 
         // export
         MenuItemButton(
           onPressed: controller.exportAsText,
           leadingIcon: const Icon(Icons.archive_outlined),
-          child: const Text('Export as text'),
+          child: const Text('导出为文本'),
         ),
 
         // rules help
@@ -228,11 +228,11 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
                             children: [
                               const TextSpan(
                                 text:
-                                    'Manage adventures using the rules of Mythic Game Master Emulator, 2nd Edition.\n'
-                                    'Find out more on the ',
+                                    '使用《Mythic Game Master Emulator, 2nd Edition》规则管理冒险。\n'
+                                    '了解更多请访问',
                               ),
                               getInlineLink(
-                                text: 'official site',
+                                text: '官方网站',
                                 url:
                                     'https://idispatch75.github.io/mythic-gme-adventures/',
                               ),
@@ -243,10 +243,10 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
                         Padding(
                           padding: const EdgeInsets.only(top: 16.0),
                           child: Text(
-                            'This work is based on Mythic Game Master Emulator, 2nd Edition by Tana Pigeon,'
-                            ' published by Word Mill Games, and licensed for our use under the'
-                            ' Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.'
-                            ' Find out more at www.wordmillgames.com.'
+                            '本作品基于 Tana Pigeon 所著的 Mythic Game Master Emulator, 2nd Edition，'
+                            '由 Word Mill Games 出版，依据以下许可授权使用：'
+                            '知识共享 署名-非商业性使用 4.0 国际 (CC BY-NC 4.0) 许可协议。'
+                            '详情请访问 www.wordmillgames.com。'
                             '\n'
                             '\nThe Portuguese translations are based on the work of Retropunk.'
                             ' Find out more at retropunk.com.br.'
@@ -266,7 +266,7 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
             }
           },
           leadingIcon: const Icon(Icons.info_outline),
-          child: const Text('About'),
+          child: const Text('关于'),
         ),
       ]);
     }

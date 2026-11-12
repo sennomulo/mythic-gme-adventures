@@ -64,7 +64,7 @@ class _ThreadComplementEditView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Is tracked
-          BooleanSetting(setting: controller.isTracked, text: 'Track Progress'),
+          BooleanSetting(setting: controller.isTracked, text: '跟踪进度'),
 
           // track size
           if (controller.isTracked())

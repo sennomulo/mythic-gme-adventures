@@ -40,7 +40,7 @@ class RandomEventLookupView extends StatelessWidget {
         .isPreparedAdventure();
 
     return RollLookupView(
-      header: 'Random Event',
+      header: '随机事件',
       rollColors: AppStyles.randomEventColors,
       entries: [
         // RemoteEvent

@@ -25,7 +25,7 @@ class ClearLogButton extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: TextButton(
           onPressed: onPressed,
-          child: const Text('Clear'),
+          child: const Text('清空'),
         ),
       ),
     );

@@ -67,11 +67,11 @@ class _SmallLayoutOracles extends HookWidget {
     return LayoutTabBar(
       tabIndex: controller.oraclesTabIndex,
       tabs: [
-        Tab(text: 'TABLES'),
+        Tab(text: '意义表'),
         Obx(() {
-          return Tab(text: getPhysicalDiceModeEnabled ? 'LOOKUP' : 'ROLL LOG');
+          return Tab(text: getPhysicalDiceModeEnabled ? '查询' : '掷骰记录');
         }),
-        Tab(text: 'DICE ROLLER'),
+        Tab(text: '掷骰器'),
       ],
       children: [
         // tables
@@ -160,7 +160,7 @@ class SmallLayoutScenes extends HookWidget {
       }
 
       Widget keyedSceneTab = const Text(
-        'KEYED SCENES',
+        '插入场景',
         softWrap: false,
         overflow: TextOverflow.fade,
       );
@@ -183,9 +183,9 @@ class SmallLayoutScenes extends HookWidget {
       return LayoutTabBar(
         tabIndex: layoutController.sceneTabIndex,
         tabs: [
-          const Tab(text: 'THREADS'),
-          const Tab(text: 'CHARACTERS'),
-          const Tab(text: 'SCENES'),
+          const Tab(text: '线索'),
+          const Tab(text: '角色'),
+          const Tab(text: '场景'),
           Tab(child: keyedSceneTab),
         ],
         children: const [
@@ -197,7 +197,7 @@ class SmallLayoutScenes extends HookWidget {
               ChaosFactorView(dense: true),
               Expanded(
                 child: _HeaderView(
-                  title: 'SCENES',
+                  title: '场景',
                   helpEntry: scenesHelp,
                   child: ScenesView(dense: true),
                 ),
@@ -205,7 +205,7 @@ class SmallLayoutScenes extends HookWidget {
             ],
           ),
           _HeaderView(
-            title: 'KEYED SCENES',
+            title: '插入场景',
             child: KeyedScenesView(),
           ),
         ],
@@ -236,28 +236,28 @@ class SmallLayoutOther extends HookWidget {
       return LayoutTabBar(
         tabIndex: controller.otherTabIndex,
         tabs: [
-          const Tab(text: 'THREADS'),
-          const Tab(text: 'CHARACTERS'),
-          if (hasFeatures) const Tab(text: 'FEATURES'),
-          const Tab(text: 'PLAYERS'),
+          const Tab(text: '线索'),
+          const Tab(text: '角色'),
+          if (hasFeatures) const Tab(text: '特征'),
+          const Tab(text: '玩家角色'),
           const Tab(text: 'NOTES'),
         ],
         children: [
           _HeaderView(
-            title: 'THREADS',
+            title: '线索',
             child: ThreadsView(showAddToListNotification: true),
           ),
           _HeaderView(
-            title: 'CHARACTERS',
+            title: '角色',
             child: CharactersView(showAddToListNotification: true),
           ),
           if (hasFeatures)
             _HeaderView(
-              title: 'FEATURES',
+              title: '特征',
               child: const FeaturesView(),
             ),
           _HeaderView(
-            title: 'PLAYERS',
+            title: '玩家角色',
             child: const PlayerCharactersView(),
           ),
           _HeaderView(

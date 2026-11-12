@@ -107,7 +107,7 @@ class EditDialog<TResult> extends HookWidget {
                         side: BorderSide(color: deleteColor),
                       ),
                       child: Text(
-                        'Delete',
+                        '删除',
                         style: TextStyle(color: deleteColor),
                       ),
                     ),
@@ -122,7 +122,7 @@ class EditDialog<TResult> extends HookWidget {
                         // Cancel button
                         TextButton(
                           onPressed: () => Get.back<void>(),
-                          child: const Text('Cancel'),
+                          child: const Text('取消'),
                         ),
 
                         const SizedBox(width: 8.0),
@@ -130,7 +130,7 @@ class EditDialog<TResult> extends HookWidget {
                         // Save button
                         FilledButton(
                           onPressed: save,
-                          child: const Text('Save'),
+                          child: const Text('保存'),
                         ),
                       ],
                     ),
@@ -146,8 +146,8 @@ class EditDialog<TResult> extends HookWidget {
 
   Future<void> _delete() async {
     if (await Dialogs.showConfirmation(
-      title: 'Delete $itemTypeLabel',
-      message: 'Delete the $itemTypeLabel?',
+      title: '删除$itemTypeLabel',
+      message: '确定删除该$itemTypeLabel吗？',
     )) {
       await onDelete!();
 

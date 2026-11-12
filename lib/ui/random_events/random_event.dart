@@ -61,7 +61,7 @@ sealed class RandomEventFocus {
 class RemoteEvent extends RandomEventFocus {
   static const String _id = 'RemoteEvent';
 
-  static const String eventName = 'Remote Event';
+  static const String eventName = '遥远事件';
   static const int rollThreshold = 5;
 
   @override
@@ -71,7 +71,7 @@ class RemoteEvent extends RandomEventFocus {
 class AmbiguousEvent extends RandomEventFocus {
   static const String _id = 'AmbiguousEvent';
 
-  static const String eventName = 'Ambiguous Event';
+  static const String eventName = '模糊事件';
   static const int rollThreshold = 10;
 
   @override
@@ -81,7 +81,7 @@ class AmbiguousEvent extends RandomEventFocus {
 class NewNpc extends RandomEventFocus {
   static const String _id = 'NewNpc';
 
-  static const String eventName = 'New NPC';
+  static const String eventName = '新 NPC';
   static const int rollThreshold = 20;
 
   @override
@@ -91,7 +91,7 @@ class NewNpc extends RandomEventFocus {
 class AdventureFeature extends RandomEventFocus {
   static const String _id = 'AdventureFeature';
 
-  static const String eventName = 'Adventure Feature';
+  static const String eventName = '冒险特征';
   static const int rollThreshold = 20;
 
   final String _target;
@@ -108,9 +108,9 @@ class AdventureFeature extends RandomEventFocus {
 class NpcEvent extends RandomEventFocus {
   static const String _id = 'NpcEvent';
 
-  static const String actionEventName = 'NPC Action';
-  static const String negativeEventName = 'NPC Negative';
-  static const String positiveEventName = 'NPC Positive';
+  static const String actionEventName = 'NPC 行动';
+  static const String negativeEventName = 'NPC 负面事件';
+  static const String positiveEventName = 'NPC 正面事件';
   static int actionRollThreshold({required bool isPreparedAdventure}) => 40;
   static int negativeRollThreshold({required bool isPreparedAdventure}) =>
       isPreparedAdventure ? 50 : 45;
@@ -134,9 +134,9 @@ class NpcEvent extends RandomEventFocus {
 class ThreadEvent extends RandomEventFocus {
   static const String _id = 'ThreadEvent';
 
-  static const String towardEventName = 'Move toward a Thread';
-  static const String awayEventName = 'Move away from a Thread';
-  static const String closeEventName = 'Close a Thread';
+  static const String towardEventName = '推进一条线索';
+  static const String awayEventName = '远离一条线索';
+  static const String closeEventName = '关闭一条线索';
   static const int towardRollThreshold = 55;
   static const int awayRollThreshold = 65;
   static const int closeRollThreshold = 70;
@@ -158,8 +158,8 @@ class ThreadEvent extends RandomEventFocus {
 class PcEvent extends RandomEventFocus {
   static const String _id = 'PcEvent';
 
-  static const String negativeEventName = 'PC Negative';
-  static const String positiveEventName = 'PC Positive';
+  static const String negativeEventName = '玩家角色负面事件';
+  static const String positiveEventName = '玩家角色正面事件';
   static int negativeRollThreshold({required bool isPreparedAdventure}) =>
       isPreparedAdventure ? 70 : 80;
   static int positiveRollThreshold({required bool isPreparedAdventure}) =>
@@ -182,7 +182,7 @@ class PcEvent extends RandomEventFocus {
 class CurrentContext extends RandomEventFocus {
   static const String _id = 'CurrentContext';
 
-  static const String eventName = 'Current Context';
+  static const String eventName = '当前情境';
   static const int rollThreshold = 100;
 
   @override
@@ -208,7 +208,7 @@ void rollRandomEvent() {
     );
     if (result != null) {
       focus = AdventureFeature(
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -227,7 +227,7 @@ void rollRandomEvent() {
     if (result != null) {
       focus = NpcEvent(
         eventName: NpcEvent.actionEventName,
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -240,7 +240,7 @@ void rollRandomEvent() {
     if (result != null) {
       focus = NpcEvent(
         eventName: NpcEvent.negativeEventName,
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -253,7 +253,7 @@ void rollRandomEvent() {
     if (result != null) {
       focus = NpcEvent(
         eventName: NpcEvent.positiveEventName,
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -263,7 +263,7 @@ void rollRandomEvent() {
     if (result != null) {
       focus = ThreadEvent(
         eventName: ThreadEvent.towardEventName,
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -273,7 +273,7 @@ void rollRandomEvent() {
     if (result != null) {
       focus = ThreadEvent(
         eventName: ThreadEvent.awayEventName,
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -283,7 +283,7 @@ void rollRandomEvent() {
     if (result != null) {
       focus = ThreadEvent(
         eventName: ThreadEvent.closeEventName,
-        target: result.choose ? 'Choose' : result.item!.value.name,
+        target: result.choose ? '自选' : result.item!.value.name,
       );
     }
   }
@@ -296,7 +296,7 @@ void rollRandomEvent() {
     focus = result != null
         ? PcEvent(
             eventName: PcEvent.negativeEventName,
-            target: result.choose ? 'Choose' : result.item!.value.name,
+            target: result.choose ? '自选' : result.item!.value.name,
           )
         : PcEvent(eventName: PcEvent.negativeEventName, target: '');
   }
@@ -309,7 +309,7 @@ void rollRandomEvent() {
     focus = result != null
         ? PcEvent(
             eventName: PcEvent.positiveEventName,
-            target: result.choose ? 'Choose' : result.item!.value.name,
+            target: result.choose ? '自选' : result.item!.value.name,
           )
         : PcEvent(eventName: PcEvent.positiveEventName, target: '');
   }
@@ -375,7 +375,7 @@ void showPlayerCharactersLookup(BuildContext context) {
 
   final itemNames = playerCharacters.map<String?>((e) => e.value.name).toList();
 
-  _showLookup(context, 'Players', itemNames);
+  _showLookup(context, '玩家角色', itemNames);
 }
 
 void showFeaturesLookup(BuildContext context) {
@@ -386,7 +386,7 @@ void showFeaturesLookup(BuildContext context) {
       .map<String?>((e) => e.value.name)
       .toList();
 
-  _showLookup(context, 'Features', itemNames);
+  _showLookup(context, '特征', itemNames);
 }
 
 void _showLookup(BuildContext context, String title, List<String?> itemNames) {

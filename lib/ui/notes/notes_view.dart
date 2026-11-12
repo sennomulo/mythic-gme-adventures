@@ -23,7 +23,7 @@ class NotesView extends GetView<NotesService> {
             IconButton.filled(
               onPressed: _create,
               icon: const Icon(Icons.add),
-              tooltip: 'Create a Note',
+              tooltip: '新建笔记',
             ),
           ],
         ),
@@ -76,7 +76,7 @@ class _NoteView extends GetView<NotesService> {
             ? IconButton(
                 onPressed: _editFullscreen,
                 icon: const Icon(Icons.fullscreen),
-                tooltip: 'Full screen edition',
+                tooltip: '全屏编辑',
               )
             : null,
       ),

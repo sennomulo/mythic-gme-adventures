@@ -15,7 +15,7 @@ class CharactersListController extends ListableItemsListController<Character> {
 }
 
 class CharactersListView extends ListableItemsListView<Character> {
-  static const listItemTypeLabel = 'Character';
+  static const listItemTypeLabel = '角色';
 
   const CharactersListView({super.key});
 

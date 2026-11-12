@@ -61,7 +61,7 @@ class ThreadProgressView extends GetView<ThreadController> {
               child: IconButton.outlined(
                 onPressed: !isDeleted ? controller.rollDiscovery : null,
                 icon: AppStyles.rollIcon,
-                tooltip: 'Roll Discovery',
+                tooltip: '掷探索',
               ),
             ),
             buttonWrapper(
@@ -69,7 +69,7 @@ class ThreadProgressView extends GetView<ThreadController> {
                 onPressed: !isDeleted
                     ? () => controller.addFlashpoint(2)
                     : null,
-                tooltip: 'Mark a Flashpoint and +2 progress',
+                tooltip: '标记一次闪点并 +2 进度',
                 icon: const _MarkFlashpointIcon(add: true),
               ),
             ),
@@ -84,7 +84,7 @@ class ThreadProgressView extends GetView<ThreadController> {
               child: const SizedBox(
                 width: 252,
                 child: Text(
-                  'Mark a Flashpoint and +2 progress',
+                  '标记一次闪点并 +2 进度',
                   softWrap: true,
                 ),
               ),
@@ -92,7 +92,7 @@ class ThreadProgressView extends GetView<ThreadController> {
             MenuItemButton(
               leadingIcon: AppStyles.rollIcon,
               onPressed: !isDeleted ? controller.rollDiscovery : null,
-              child: const Text('Roll Discovery'),
+              child: const Text('掷探索'),
             ),
           ];
         }
@@ -120,7 +120,7 @@ class ThreadProgressView extends GetView<ThreadController> {
             IconButton.outlined(
               onPressed: !isDeleted ? () => controller.addProgress(2) : null,
               icon: const Icon(Icons.exposure_plus_2),
-              tooltip: 'Mark +2 progress',
+              tooltip: '标记 +2 进度',
             ),
 
             // more button
@@ -135,7 +135,7 @@ class ThreadProgressView extends GetView<ThreadController> {
                 child: const SizedBox(
                   width: 252,
                   child: Text(
-                    'Mark Flashpoint with no progress',
+                    '标记闪点（不加进度）',
                     softWrap: true,
                   ),
                 ),
@@ -145,7 +145,7 @@ class ThreadProgressView extends GetView<ThreadController> {
               MenuItemButton(
                 leadingIcon: const _MarkFlashpointIcon(add: false),
                 onPressed: !isDeleted ? controller.removeFlashpoint : null,
-                child: const Text('Remove Flashpoint'),
+                child: const Text('移除闪点'),
               ),
 
               // Remove 2 progress
@@ -154,7 +154,7 @@ class ThreadProgressView extends GetView<ThreadController> {
                 onPressed: !isDeleted
                     ? () => controller.removeProgress(2)
                     : null,
-                child: const Text('Remove 2 progress'),
+                child: const Text('移除 2 点进度'),
               ),
 
               // Remove 1 progress
@@ -163,7 +163,7 @@ class ThreadProgressView extends GetView<ThreadController> {
                 onPressed: !isDeleted
                     ? () => controller.removeProgress(1)
                     : null,
-                child: const Text('Remove 1 progress'),
+                child: const Text('移除 1 点进度'),
               ),
             ]),
           ],

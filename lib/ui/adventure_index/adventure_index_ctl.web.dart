@@ -9,11 +9,11 @@ extension AdventureIndexControllerX on AdventureIndexController {
   Future<void> uploadMeaningTables() async {
     // ask confirmation
     if (!await Dialogs.showConfirmation(
-      title: 'Upload Custom Meaning Tables?',
+      title: '上传自定义意义表？',
       message:
-          'This will delete the Custom Meaning Tables'
-          ' in your online storage and upload the meaning tables in the selected file.\n\n'
-          'You may need to restart the application for the changes to take effect.',
+          '这将删除自定义意义表'
+          '，然后在所选文件中上传意义表。\n\n'
+          '可能需要重启应用程序才能使更改生效。',
       userManualAnchor: 'custom-meaning-tables',
     )) {
       return;
@@ -21,7 +21,7 @@ extension AdventureIndexControllerX on AdventureIndexController {
 
     // pick a zip file
     final zipContent = await pickFileAsBytes(
-      dialogTitle: 'Meaning Tables Zip file',
+      dialogTitle: '意义表 Zip 文件',
       extension: 'zip',
     );
     if (zipContent == null) {

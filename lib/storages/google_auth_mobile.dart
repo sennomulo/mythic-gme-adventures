@@ -38,7 +38,7 @@ class MobileGoogleAuthManager
       try {
         await _googleSignIn.signIn();
       } on PlatformException catch (e) {
-        loggy.error('Sign-in failed', e);
+        loggy.error('登录失败', e);
 
         switch (e.code) {
           case GoogleSignIn.kNetworkError:
@@ -47,7 +47,7 @@ class MobileGoogleAuthManager
             throw GoogleSignInException(null, e);
         }
       } catch (e) {
-        loggy.error('Sign-in failed', e);
+        loggy.error('登录失败', e);
 
         throw GoogleSignInException(null, e);
       }

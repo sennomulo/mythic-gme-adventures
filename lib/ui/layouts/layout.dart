@@ -143,18 +143,18 @@ const bottomNavigationDestinations = [
   NavigationDestination(
     icon: Icon(Icons.remove_red_eye_outlined),
     selectedIcon: Icon(Icons.remove_red_eye_rounded),
-    label: 'Oracles',
+    label: '神谕',
     tooltip: '',
   ),
   NavigationDestination(
     icon: Icon(Icons.video_camera_back_outlined),
     selectedIcon: Icon(Icons.video_camera_back_rounded),
-    label: 'Scenes',
+    label: '场景',
     tooltip: '',
   ),
   NavigationDestination(
     icon: Icon(Icons.more_horiz_outlined),
-    label: 'More',
+    label: '更多',
     tooltip: '',
   ),
 ];

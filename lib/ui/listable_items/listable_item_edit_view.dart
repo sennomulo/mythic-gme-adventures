@@ -48,7 +48,7 @@ abstract class ListableItemEditView<TItem extends ListableItem>
           TextFormField(
             controller: nameController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Name'),
+            decoration: const InputDecoration(labelText: '名称'),
             autofocus: item.name.isEmpty,
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
@@ -57,7 +57,7 @@ abstract class ListableItemEditView<TItem extends ListableItem>
 
           TextFormField(
             controller: summaryController,
-            decoration: const InputDecoration(labelText: 'Summary'),
+            decoration: const InputDecoration(labelText: '摘要'),
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
           ),
@@ -67,7 +67,7 @@ abstract class ListableItemEditView<TItem extends ListableItem>
             fit: FlexFit.loose,
             child: RichTextEditor(
               controller: notesController,
-              title: 'Notes',
+              title: '笔记',
             ),
           ),
 
@@ -82,10 +82,10 @@ abstract class ListableItemEditView<TItem extends ListableItem>
           if (canDelete)
             BooleanSetting(
               setting: isArchived,
-              text: 'Archived',
+              text: '已归档',
               subtext:
-                  'Archiving a $_itemTypeLabel removes it from the ${_itemTypeLabel}s List'
-                  ' and moves it at the end of the list of ${_itemTypeLabel}s.',
+                  '归档$_itemTypeLabel会将其从列表中移除，'
+                  '并移到已归档条目的末尾。',
               withTopPadding: true,
             ),
         ],

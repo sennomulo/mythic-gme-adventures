@@ -14,11 +14,11 @@ extension DateTimeExtensions on DateTime {
     final elapsed = DateTime.now().difference(this);
 
     if (elapsed.inSeconds < 10) {
-      return 'now';
+      return '刚刚';
     } else if (elapsed.inMinutes < 1) {
-      return '< 1 min. ago';
+      return '1 分钟内';
     } else if (elapsed.inMinutes < 10) {
-      return '${elapsed.inMinutes} min. ago';
+      return '${elapsed.inMinutes} 分钟前';
     } else {
       if (isSameDay(DateTime.now())) {
         return 'at ${_timeFormat.format(this)}';

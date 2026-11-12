@@ -115,9 +115,9 @@ class AdventureIndexController extends GetxController {
 
   Future<void> deleteAdventure(IndexAdventureVM adventure) async {
     if (await Dialogs.showConfirmation(
-      title: 'Delete Adventure?',
+      title: '删除冒险？',
       message:
-          'The Adventure "${adventure.source.name}" will be permanently deleted.',
+          '冒险“${adventure.source.name}”将被永久删除。',
     )) {
       status.value = RxStatus.loading();
 
@@ -137,17 +137,17 @@ class AdventureIndexController extends GetxController {
 
   Future<void> synchronizeAdventures() async {
     if (await Dialogs.showConfirmation(
-      title: 'Synchronize storages?',
+      title: '同步存储？',
       message:
-          'This updates the local and online storages'
-          ' with the most recent adventure versions.',
+          '这将更新本地与线上存储'
+          '（含最新的冒险版本）。',
     )) {
       try {
         isSynchronizing.value = true;
 
         await Get.find<AdventurePersisterService>().synchronizeAdventures();
       } catch (e) {
-        handleError('synchronize', e);
+        handleError('sync', e);
 
         return;
       } finally {
@@ -163,10 +163,10 @@ class AdventureIndexController extends GetxController {
     IndexAdventureVM adventure,
   ) async {
     if (!await Dialogs.showConfirmation(
-      title: 'Restore Adventure?',
+      title: '恢复冒险？',
       message:
-          'This will replace the content of this Adventure'
-          ' with the selected file.',
+          '这将替换当前冒险的全部内容'
+          '为所选文件的内容。',
     )) {
       return;
     }
@@ -175,24 +175,24 @@ class AdventureIndexController extends GetxController {
     try {
       final adventureId = json['id'] as int?;
       if (adventureId == null) {
-        throw Exception('Invalid Adventure file');
+        throw Exception('无效的冒险文件');
       }
 
       if (adventureId != adventure.source.id) {
         if (!await Dialogs.showConfirmation(
-          title: 'Adventure mismatch',
+          title: '冒险不匹配',
           message:
-              'The file you selected does not match the Adventure.'
-              ' This may be normal if you restore into a newly created adventure.\n'
-              'Continue?',
+              '所选文件与当前冒险不匹配。'
+              '如果恢复到新建的冒险中，这可能属于正常现象。\n'
+              '是否继续？',
         )) {
           return;
         }
       }
     } catch (e) {
       await Dialogs.showAlert(
-        title: 'Invalid Adventure',
-        message: 'The selected file does not contain a valid Adventure.',
+        title: '无效的冒险',
+        message: '所选文件不包含有效的冒险数据。',
       );
     }
 
@@ -216,11 +216,11 @@ class AdventureIndexController extends GetxController {
   Future<void> backupLocalAdventures() async {
     // ask confirmation
     if (!await Dialogs.showConfirmation(
-      title: 'Backup local Adventures?',
+      title: '备份本地冒险？',
       message:
-          'This will create a zip file containing all the Adventures'
-          ' in your local storage.\n'
-          'You can pick Adventures to restore from there when needed.',
+          '这将创建一个包含所有冒险的 zip 文件'
+          '（本地存储中）。\n'
+          '之后需要时可以从该文件中挑选冒险进行恢复。',
     )) {
       return;
     }
@@ -255,18 +255,18 @@ class AdventureIndexController extends GetxController {
       Uint8List.fromList(zipContent),
       fileName:
           'Mythic_GME_Adventures-backup-${DateFormat('y-MM-dd_HH-mm').format(DateTime.now())}.zip',
-      dialogTitle: 'Adventures backup',
+      dialogTitle: '冒险备份',
     );
   }
 
   Future<void> importLocalCustomMeaningTables() async {
     // ask confirmation
     if (!await Dialogs.showConfirmation(
-      title: 'Import Custom Meaning Tables?',
+      title: '导入自定义意义表？',
       message:
-          'This will delete the Custom Meaning Tables'
-          ' in your local storage and import the selected ones.\n\n'
-          'You may need to restart the application for the changes to take effect.',
+          '这将删除自定义意义表'
+          '，然后导入所选文件。\n\n'
+          '可能需要重启应用程序才能使更改生效。',
       userManualAnchor: 'custom-meaning-tables',
     )) {
       return;
@@ -274,7 +274,7 @@ class AdventureIndexController extends GetxController {
 
     // pick a zip file
     final zipContent = await pickFileAsBytes(
-      dialogTitle: 'Meaning Tables Zip file',
+      dialogTitle: '意义表 Zip 文件',
       extension: 'zip',
     );
     if (zipContent == null) {
@@ -287,9 +287,9 @@ class AdventureIndexController extends GetxController {
       await meaningTables.importZipToLocal(zipContent);
 
       await Dialogs.showAlert(
-        title: 'Import successful',
+        title: '导入成功',
         message:
-            'The Custom Meaning Tables were imported into your local storage.',
+            '自定义意义表已导入到本地存储。',
       );
     } catch (e) {
       handleError('import', e);
@@ -299,11 +299,11 @@ class AdventureIndexController extends GetxController {
   Future<void> deleteLocalCustomMeaningTables() async {
     // ask confirmation
     if (!await Dialogs.showConfirmation(
-      title: 'Delete Custom Meaning Tables?',
+      title: '删除自定义意义表？',
       message:
-          'This will permanently delete the Custom Meaning Tables'
-          ' in your local storage.\n\n'
-          'You may need to restart the application for the changes to take effect.',
+          '这将永久删除自定义意义表'
+          '（本地存储中）。\n\n'
+          '可能需要重启应用程序才能使更改生效。',
     )) {
       return;
     }
@@ -314,9 +314,9 @@ class AdventureIndexController extends GetxController {
       await meaningTables.deleteLocal();
 
       await Dialogs.showAlert(
-        title: 'Deletion successful',
+        title: '删除成功',
         message:
-            'The Custom Meaning Tables in your local storage were deleted.',
+            '本地存储中的自定义意义表已被删除。',
       );
     } catch (e) {
       handleError('_delete_meaning_tables', e);
@@ -326,14 +326,14 @@ class AdventureIndexController extends GetxController {
   Future<void> downloadMeaningTables() async {
     // ask confirmation
     if (!await Dialogs.showConfirmation(
-      title: 'Download Custom Meaning Tables?',
+      title: '下载自定义意义表？',
       message:
-          'This will delete the Custom Meaning Tables'
-          ' in your local storage and download the meaning tables from the remote storage.\n'
-          'You may need to restart the application for the changes to take effect.\n\n'
-          'Note that only the files uploaded by the Application are visible by the Application.\n'
-          'You must first upload the Meaning Tables to be able to download them.'
-          ' If you put them in your online storage via Google Drive web site, nothing will be downloaded.',
+          '这将删除自定义意义表'
+          '，然后从线上存储下载意义表。\n'
+          '可能需要重启应用程序才能使更改生效。\n\n'
+          '注意：应用只能看到由本应用上传的文件。\n'
+          '必须先上传意义表，才能下载它们。'
+          '如果你通过 Google Drive 网页版手动放入文件，应用将不会下载任何内容。',
       userManualAnchor: 'online-storage',
     )) {
       return;
@@ -396,11 +396,11 @@ class AdventureIndexController extends GetxController {
             final now = DateTime.now();
             final yesterday = DateTime.now().subtract(const Duration(days: 1));
             if (now.isSameDay(saveDate)) {
-              saveDateText = 'today at ${_timeFormat.format(saveDate)}';
+              saveDateText = '今天 ${_timeFormat.format(saveDate)}';
             } else if (yesterday.day == saveDate.day &&
                 yesterday.month == saveDate.month &&
                 yesterday.year == saveDate.year) {
-              saveDateText = 'yesterday at ${_timeFormat.format(saveDate)}';
+              saveDateText = '昨天 ${_timeFormat.format(saveDate)}';
             } else {
               saveDateText = _dateFormat.format(saveDate);
             }
@@ -411,14 +411,14 @@ class AdventureIndexController extends GetxController {
               saveDateSource = '';
             } else if (adventure.localSaveTimestamp >
                 adventure.remoteSaveTimestamp) {
-              saveDateSource = 'locally ';
+              saveDateSource = '本地';
             } else {
-              saveDateSource = 'online ';
+              saveDateSource = '线上';
             }
 
-            saveDateText = 'Saved $saveDateSource$saveDateText';
+            saveDateText = '保存于 $saveDateSource$saveDateText';
           } else {
-            saveDateText = 'Not saved yet';
+            saveDateText = '尚未保存';
           }
 
           return IndexAdventureVM(adventure, saveDateText);
@@ -429,78 +429,89 @@ class AdventureIndexController extends GetxController {
   }
 
   void handleError(String action, Object error) {
+    final actionLabel = switch (action) {
+      'save' => '保存',
+      'delete' => '删除',
+      'sync' => '同步',
+      'import' => '导入',
+      'download' => '下载',
+      'load' => '载入',
+      'upload' => '上传',
+      _ => action,
+    };
+
     String message;
     if (error is LocalStorageNotSupportedException) {
       message =
-          'Local storage is not supported by your browser.\n\n'
-          'You must Use Google Drive and Disable local storage.';
+          '你的浏览器不支持本地存储。\n\n'
+          '你必须开启“使用 Google Drive”并勾选“禁用本地存储”。';
     } else if (error is LocalStorageException) {
       message =
-          'Failed to $action "${error.filePath}" locally: ${error.error}.\n\n';
+          '本地${actionLabel}文件 "${error.filePath}" 时失败：${error.error}。\n\n';
       switch (action) {
         case 'load':
           message +=
-              'If you have an up to date online save,'
-              ' you may want to delete the file locally,'
-              ' or you can disable local storage.';
+              '如果线上有最新存档，'
+              '你可以删除本地文件，'
+              '或者禁用本地存储。';
           break;
 
         case 'save':
           message +=
-              'Check the access rights on the save directory,'
-              ' or, if you can save online,'
-              ' you can disable local storage.';
+              '请检查保存目录的访问权限，'
+              '或者，如果能在线上保存，'
+              '你可以禁用本地存储。';
           break;
 
         case 'delete':
           message +=
-              'Check the access rights on the save directory,'
-              ' or delete the file manually.';
+              '请检查保存目录的访问权限，'
+              '或者手动删除该文件。';
           break;
 
         case 'upload':
-          message += 'Check the file can be read.';
+          message += '请确认文件可以读取。';
 
         case 'download':
-          message += 'Check the access rights on the download directory.';
+          message += '请检查下载目录的访问权限。';
           break;
       }
     } else if (error is RemoteStorageException) {
       final actionText = switch (action) {
-        'save' => '$action "${error.filePath}" to',
-        'delete' => '$action "${error.filePath}" from',
-        'load' => '$action "${error.filePath}" from',
-        'upload' => '$action "${error.filePath}" to',
-        'download' => '$action "${error.filePath}" from',
-        _ => '$action "${error.filePath}" from',
+        'save' => '无法将文件 "${error.filePath}" 保存到 ${error.provider}',
+        'delete' => '无法从 ${error.provider} 删除文件 "${error.filePath}"',
+        'load' => '无法从 ${error.provider} 载入文件 "${error.filePath}"',
+        'upload' => '无法将文件 "${error.filePath}" 上传到 ${error.provider}',
+        'download' => '无法从 ${error.provider} 下载文件 "${error.filePath}"',
+        _ => '无法在 ${error.provider} 上操作文件 "${error.filePath}"',
       };
 
-      message = 'Failed to $actionText ${error.provider}.\n\n';
+      message = '$actionText。\n\n';
 
       if (error is RemoteStorageAuthenticationException) {
         message +=
-            'The authentication is no more valid.\n'
-            'Please toggle ${error.provider} access to retry a silent authentication,'
-            ' or sign out and enable ${error.provider} again.';
+            '身份验证已失效。\n'
+            '请重新授权 ${error.provider} 以进行静默登录，'
+            '或退出登录后重新启用 ${error.provider}。';
       } else if (error is RemoteStorageNetworkException) {
         message +=
-            '${error.provider} could not be contacted.\n'
-            'Please check your internet access.';
+            '无法连接到 ${error.provider}。\n'
+            '请检查你的网络连接。';
       } else if (error is RemoteStorageOperationException) {
         message +=
-            '${error.provider} refused to perform the operation:'
-            ' ${error.error}.';
+            '${error.provider} 拒绝执行该操作：'
+            ' ${error.error}。';
       }
     } else {
       message =
-          'Failed to $action data.\n\n'
-          'An unexpected error occurred: $error.';
+          '${actionLabel}数据失败。\n\n'
+          '发生意外错误：$error。';
     }
 
     if (action == 'load') {
       status.value = RxStatus.error(message);
     } else {
-      Dialogs.showAlert(title: 'Failed to $action', message: message);
+      Dialogs.showAlert(title: '${actionLabel}失败', message: message);
 
       status.value = RxStatus.success();
     }

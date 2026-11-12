@@ -14,7 +14,7 @@ class ChaosFactorView extends GetView<ChaosFactorService> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Header('Chaos Factor'),
+        const Header('混乱因子'),
         SizedBox(
           height: dense ? 45 : 60,
           width: 140,

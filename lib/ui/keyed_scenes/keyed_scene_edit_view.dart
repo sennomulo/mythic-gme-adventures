@@ -27,7 +27,7 @@ class KeyedSceneEditView extends HookWidget {
     final counts = _scene.counts.map((e) => e.count.obs).toList();
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Keyed Scene',
+      itemTypeLabel: '插入场景',
       canDelete: !isNew,
       onSave: () {
         _scene.trigger = triggerController.text;
@@ -54,7 +54,7 @@ class KeyedSceneEditView extends HookWidget {
             validator: validateNotEmpty,
             minLines: 2,
             maxLines: null,
-            decoration: const InputDecoration(labelText: 'Trigger'),
+            decoration: const InputDecoration(labelText: '触发条件'),
             textCapitalization: TextCapitalization.sentences,
             autofocus: _scene.trigger.isEmpty,
           ),
@@ -68,14 +68,14 @@ class KeyedSceneEditView extends HookWidget {
               validator: validateNotEmpty,
               minLines: 3,
               maxLines: null,
-              decoration: const InputDecoration(labelText: 'Event'),
+              decoration: const InputDecoration(labelText: '事件'),
               textCapitalization: TextCapitalization.sentences,
             ),
           ),
           const SizedBox(height: 16),
 
           // counts
-          const Text('Counts'),
+          const Text('计数'),
           const SizedBox(height: 8),
           Wrap(
             alignment: WrapAlignment.start,
@@ -168,7 +168,7 @@ class _Count extends StatelessWidget {
             ).colorScheme.onSurface.withValues(alpha: 0.6),
           ),
           visualDensity: VisualDensity.compact,
-          tooltip: 'Reset the count',
+          tooltip: '重置计数',
         ),
       ],
     );

@@ -32,11 +32,11 @@ abstract class Dialogs {
           Text.rich(
             TextSpan(
               children: [
-                const TextSpan(text: 'See the '),
+                const TextSpan(text: '详见'),
                 getUserManualLink(
                   anchor: userManualAnchor.isEmpty ? null : userManualAnchor,
                 ),
-                const TextSpan(text: ' for more info.'),
+                const TextSpan(text: '了解更多。'),
               ],
             ),
           ),
@@ -67,7 +67,7 @@ abstract class Dialogs {
         ),
         actions: [
           TextButton(
-            child: const Text('OK'),
+            child: const Text('确定'),
             onPressed: () => Get.back<void>(),
           ),
         ],
@@ -104,14 +104,14 @@ abstract class Dialogs {
   }) {
     final okButton = FilledButton(
       onPressed: onSave,
-      child: const Text('OK'),
+      child: const Text('确定'),
     );
 
     final cancelButton = TextButton(
       onPressed: () {
         Get.back(result: null);
       },
-      child: const Text('Cancel'),
+      child: const Text('取消'),
     );
 
     var actions = [cancelButton, okButton];

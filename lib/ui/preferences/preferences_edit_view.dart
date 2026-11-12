@@ -86,7 +86,7 @@ class PreferencesEditView extends HookWidget {
     final theme = Theme.of(context);
 
     return EditDialog<PreferencesEditResult>(
-      itemTypeLabel: 'Preferences',
+      itemTypeLabel: '偏好设置',
       canDelete: false,
       onSave: onSave,
       body: Column(
@@ -101,7 +101,7 @@ class PreferencesEditView extends HookWidget {
                   child: TextFormField(
                     controller: localDataDirectoryController,
                     decoration: const InputDecoration(
-                      labelText: 'Local data folder',
+                      labelText: '本地数据文件夹',
                     ),
                     textCapitalization: TextCapitalization.sentences,
                     readOnly: true,
@@ -115,7 +115,7 @@ class PreferencesEditView extends HookWidget {
                         localDataDirectoryController.text.nullIfEmpty() ??
                         defaultLocalDataDirectory.data;
                     final path = await FilePicker.getDirectoryPath(
-                      dialogTitle: 'Local data folder',
+                      dialogTitle: '本地数据文件夹',
                       initialDirectory: initialDirectory,
                       lockParentWindow: true,
                     );
@@ -140,20 +140,20 @@ class PreferencesEditView extends HookWidget {
             // tip
             const SizedBox(height: 4),
             SubLabel(
-              'Leave blank to use the default folder "${defaultLocalDataDirectory.data}".',
+              '留空则使用默认文件夹“${defaultLocalDataDirectory.data}”。',
             ),
             if (!GetPlatform.isWeb && GetPlatform.isDesktop)
               const SubLabel(
-                'Consider setting your local Google Drive, OneDrive or Dropbox folder,'
-                ' for easy sharing, fast save, and automatic backup with versioning.\n'
-                'Setting the local Google Drive here while using Google Drive as online storage'
-                ' must be avoided because the files uploaded by the Drive App will not be visible by this App.',
+                '建议将本地 Google Drive、OneDrive 或 Dropbox 文件夹设置到这里，'
+                '以便轻松共享、快速保存，并获得带版本历史的自动备份。\n'
+                '在将 Google Drive 用作线上存储的同时，又把本地 Google Drive 文件夹设为本地数据文件夹'
+                '应予避免，因为通过 Drive 应用上传的文件对本应用不可见。',
               ),
             Text.rich(
               TextSpan(
                 children: [
                   TextSpan(
-                    text: 'More info in the ',
+                    text: '更多信息见',
                     style: SubLabel.getTextStyle(theme),
                   ),
                   getUserManualLink(
@@ -172,7 +172,7 @@ class PreferencesEditView extends HookWidget {
           // brightness
           BooleanSetting(
             setting: enableDarkMode,
-            text: 'Dark mode',
+            text: '深色模式',
             withTopPadding: true,
           ),
         ],
@@ -182,7 +182,7 @@ class PreferencesEditView extends HookWidget {
 
   Future<bool?> _showConfirmationDialog(BuildContext context) async {
     final noCopyButton = TextButton(
-      child: const Text('Do not copy'),
+      child: const Text('不复制'),
       onPressed: () {
         Get.back(result: false);
       },
@@ -190,7 +190,7 @@ class PreferencesEditView extends HookWidget {
 
     final copyButton = TextButton(
       child: Text(
-        'Copy',
+        '复制',
         style: TextStyle(color: Theme.of(context).colorScheme.error),
       ),
       onPressed: () {
@@ -199,7 +199,7 @@ class PreferencesEditView extends HookWidget {
     );
 
     final cancelButton = TextButton(
-      child: const Text('Cancel'),
+      child: const Text('取消'),
       onPressed: () {
         Get.back(result: null);
       },
@@ -212,13 +212,13 @@ class PreferencesEditView extends HookWidget {
 
     return Get.dialog<bool>(
       AlertDialog.adaptive(
-        title: const Text('Copy or not copy?'),
+        title: const Text('是否复制数据？'),
         content: const Text(
-          'The data folder has changed.\n\n'
-          'You can copy the content of the previous folder'
-          ' to the new folder and overwrite its content.\n\n'
-          'Or you can just set the folder and add some content to it manually\n'
-          '(in which case you should do this now to load the new content when you exit the dialog).',
+          '数据文件夹已更改。\n\n'
+          '你可以将原文件夹中的内容复制过去'
+          '复制到新文件夹并覆盖其内容。\n\n'
+          '或者，你也可以仅设置文件夹并手动向其中添加内容\n'
+          '（此时应当现在就完成复制，以便退出对话框时加载新内容）。',
         ),
         actions: actions,
       ),

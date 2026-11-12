@@ -32,7 +32,7 @@ class FeaturesView extends GetView<FeaturesService> {
                 child: IconButton.outlined(
                   onPressed: canRoll ? () => _roll(context) : null,
                   icon: AppStyles.rollIcon,
-                  tooltip: 'Roll a Feature in this list',
+                  tooltip: '从此列表中掷一个特征',
                 ),
               ),
 
@@ -40,7 +40,7 @@ class FeaturesView extends GetView<FeaturesService> {
               IconButton.filled(
                 onPressed: _create,
                 icon: const Icon(Icons.add),
-                tooltip: 'Create a Feature',
+                tooltip: '新建特征',
               ),
             ],
           );
@@ -86,7 +86,7 @@ class FeaturesView extends GetView<FeaturesService> {
     final dieRoll = rollDie(features.length);
 
     Get.find<RollLogService>().addGenericRoll(
-      title: 'Feature',
+      title: '特征',
       value: features[dieRoll - 1].value.name,
       dieRoll: dieRoll,
     );

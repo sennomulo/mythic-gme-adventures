@@ -15,7 +15,7 @@ class ThreadsListController extends ListableItemsListController<Thread> {
 }
 
 class ThreadsListView extends ListableItemsListView<Thread> {
-  static const listItemTypeLabel = 'Thread';
+  static const listItemTypeLabel = '线索';
 
   const ThreadsListView({super.key});
 

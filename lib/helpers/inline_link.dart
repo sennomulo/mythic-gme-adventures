@@ -28,7 +28,7 @@ InlineSpan getUserManualLink({TextStyle? textStyle, String? anchor}) {
   }
 
   return getInlineLink(
-    text: 'User Manual',
+    text: '用户手册',
     url: url,
     textStyle: textStyle,
   );

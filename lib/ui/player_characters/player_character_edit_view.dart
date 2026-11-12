@@ -21,7 +21,7 @@ class PlayerCharacterEditView extends HookWidget {
     final saveTrigger = false.obs;
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Player Character',
+      itemTypeLabel: '玩家角色',
       canDelete: _canDelete,
       onSave: () {
         _player.name = nameController.text;
@@ -41,7 +41,7 @@ class PlayerCharacterEditView extends HookWidget {
           TextFormField(
             controller: nameController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Name'),
+            decoration: const InputDecoration(labelText: '名称'),
             autofocus: _player.name.isEmpty,
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
@@ -51,7 +51,7 @@ class PlayerCharacterEditView extends HookWidget {
             fit: FlexFit.loose,
             child: RichTextEditor(
               controller: notesController,
-              title: 'Notes',
+              title: '笔记',
             ),
           ),
         ],

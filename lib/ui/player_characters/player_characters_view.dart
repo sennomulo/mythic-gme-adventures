@@ -33,7 +33,7 @@ class PlayerCharactersView extends GetView<PlayerCharactersService> {
                   child: IconButton.outlined(
                     onPressed: canRoll ? _roll : null,
                     icon: AppStyles.rollIcon,
-                    tooltip: 'Roll a Player Character in this list',
+                    tooltip: '从此列表中掷一个玩家角色',
                   ),
                 ),
 
@@ -41,7 +41,7 @@ class PlayerCharactersView extends GetView<PlayerCharactersService> {
               IconButton.filled(
                 onPressed: _create,
                 icon: const Icon(Icons.add),
-                tooltip: 'Create a Player Character',
+                tooltip: '新建玩家角色',
               ),
             ],
           );
@@ -81,7 +81,7 @@ class PlayerCharactersView extends GetView<PlayerCharactersService> {
     final dieRoll = rollDie(players.length);
 
     Get.find<RollLogService>().addGenericRoll(
-      title: 'Player Characters',
+      title: '玩家角色',
       value: players[dieRoll - 1].value.name,
       dieRoll: dieRoll,
     );

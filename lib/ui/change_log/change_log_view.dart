@@ -26,7 +26,7 @@ class _ChangeLogWrapperState extends State<ChangeLogWrapper> {
         if (versions.isNotEmpty) {
           Get.dialog<void>(
             AlertDialog(
-              title: const Text("What's new"),
+              title: const Text("更新内容"),
               content: ConstrainedBox(
                 constraints: Dialogs.dialogBoxConstraints,
                 child: SingleChildScrollView(
@@ -40,7 +40,7 @@ class _ChangeLogWrapperState extends State<ChangeLogWrapper> {
               ),
               actions: [
                 TextButton(
-                  child: const Text('OK'),
+                  child: const Text('确定'),
                   onPressed: () => Get.back<void>(),
                 ),
               ],

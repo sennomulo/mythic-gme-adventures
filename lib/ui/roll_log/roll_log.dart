@@ -30,8 +30,8 @@ sealed class RollEntry {
     MeaningTableRoll._id => MeaningTableRoll.fromJson(json),
     GenericRoll._id => GenericRoll.fromJson(json),
     _ => GenericRoll(
-      title: 'unknown',
-      value: 'unknown',
+      title: '未知',
+      value: '未知',
       dieRoll: 0,
       timestamp: json['timestamp'],
     ),

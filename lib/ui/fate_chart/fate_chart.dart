@@ -79,7 +79,7 @@ class Certain extends Probability {
 
   static const instance = Certain._();
 
-  const Certain._() : super('Certain');
+  const Certain._() : super('必然');
 }
 
 class NearlyCertain extends Probability {
@@ -87,7 +87,7 @@ class NearlyCertain extends Probability {
 
   static const instance = NearlyCertain._();
 
-  const NearlyCertain._() : super('Nearly Certain');
+  const NearlyCertain._() : super('几乎必然');
 }
 
 class VeryLikely extends Probability {
@@ -95,7 +95,7 @@ class VeryLikely extends Probability {
 
   static const instance = VeryLikely._();
 
-  const VeryLikely._() : super('Very Likely');
+  const VeryLikely._() : super('非常可能');
 }
 
 class Likely extends Probability {
@@ -103,7 +103,7 @@ class Likely extends Probability {
 
   static const instance = Likely._();
 
-  const Likely._() : super('Likely');
+  const Likely._() : super('可能');
 }
 
 class FiftyFifty extends Probability {
@@ -119,7 +119,7 @@ class Unlikely extends Probability {
 
   static const instance = Unlikely._();
 
-  const Unlikely._() : super('Unlikely');
+  const Unlikely._() : super('不太可能');
 }
 
 class VeryUnlikely extends Probability {
@@ -127,7 +127,7 @@ class VeryUnlikely extends Probability {
 
   static const instance = VeryUnlikely._();
 
-  const VeryUnlikely._() : super('Very Unlikely');
+  const VeryUnlikely._() : super('非常不太可能');
 }
 
 class NearlyImpossible extends Probability {
@@ -135,7 +135,7 @@ class NearlyImpossible extends Probability {
 
   static const instance = NearlyImpossible._();
 
-  const NearlyImpossible._() : super('Nearly Impossible');
+  const NearlyImpossible._() : super('几乎不可能');
 }
 
 class Impossible extends Probability {
@@ -143,7 +143,7 @@ class Impossible extends Probability {
 
   static const instance = Impossible._();
 
-  const Impossible._() : super('Impossible');
+  const Impossible._() : super('不可能');
 }
 
 class ProbabilityVM {
@@ -277,7 +277,7 @@ class FateChartService extends GetxService {
         .outcomeProbabilities[probabilityIndex];
   }
 
-  Widget getHeader() => const Header('Fate Chart');
+  Widget getHeader() => const Header('命运图表');
 
   /// Must be wrapped in a Obx to listen to the physical dice mode
   List<Widget> getRows(BuildContext context) {
@@ -317,7 +317,7 @@ class FateChartService extends GetxService {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Expanded(
-                          child: Text('Combat Clash'),
+                          child: Text('战斗判定'),
                         ),
                         Obx(
                           () => Switch.adaptive(
@@ -335,7 +335,7 @@ class FateChartService extends GetxService {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Expanded(
-                          child: Text('Physical Dice Mode'),
+                          child: Text('实体骰模式'),
                         ),
                         Obx(
                           () => Switch.adaptive(
@@ -427,7 +427,7 @@ class FateChartService extends GetxService {
         child: ConstrainedBox(
           constraints: const BoxConstraints.tightFor(width: double.infinity),
           child: FateChartButton(
-            text: 'RANDOM EVENT',
+            text: '随机事件',
             onPressed: isPhysicalDiceModeEnabled
                 ? () => showRandomEventLookup(context)
                 : rollRandomEvent,

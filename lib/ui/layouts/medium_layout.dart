@@ -60,8 +60,8 @@ class _MediumLayoutOracles extends GetView<LayoutController> {
     return LayoutTabBar(
       tabIndex: controller.oraclesTabIndex,
       tabs: const [
-        Tab(text: 'TABLES'),
-        Tab(text: 'DICE ROLLER'),
+        Tab(text: '意义表'),
+        Tab(text: '掷骰器'),
       ],
       children: [
         // tables
@@ -175,7 +175,7 @@ class _MediumLayoutScenes extends HookWidget {
             // scenes
             RulesHelpWrapper.header(
               helpEntry: scenesHelp,
-              child: const Header('SCENES'),
+              child: const Header('场景'),
             ),
             const Expanded(child: ScenesView()),
           ],

@@ -53,7 +53,7 @@ Future<T?> showAppModalBottomSheet<T>(BuildContext context, Widget content) {
               padding: const EdgeInsets.all(4),
               child: TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Dismiss'),
+                child: const Text('关闭'),
               ),
             ),
           ),
@@ -87,7 +87,7 @@ Widget protectClose({required Widget child}) {
 
 /// Asks confirmation when closing the App.
 Future<bool> showCloseAppConfirmation() {
-  var message = 'Any unsaved progress will be lost.';
+  var message = '所有未保存的进度将会丢失。';
 
   if (Get.isRegistered<AdventureIndexService>()) {
     final adventureIndex = Get.find<AdventureIndexService>();
@@ -102,13 +102,13 @@ Future<bool> showCloseAppConfirmation() {
 
       // indicate the last save date
       message =
-          'Data was last saved ${saveDate.elapsedFromNow()}.\n\n'
+          '数据上次保存于 ${saveDate.elapsedFromNow()}。\n\n'
           '$message';
     }
   }
 
   return Dialogs.showConfirmation(
-    title: 'Close the application?',
+    title: '关闭应用程序？',
     message: message,
   );
 }
@@ -117,15 +117,15 @@ Future<void> handleUnsupportedSchemaVersion(
   UnsupportedSchemaVersionException exception,
 ) async {
   final actionMessage = GetPlatform.isWeb
-      ? 'please close this page.'
-      : 'the App will be closed.';
+      ? '请关闭本页面。'
+      : '应用程序将会关闭。';
 
   await Dialogs.showAlert(
-    title: 'Unsupported data format',
+    title: '不支持的数据格式',
     message:
-        'This version of the App does not support the new data format of the file ${exception.fileName}.'
-        '\nPlease update the App to the latest version.'
-        '\n\nTo prevent data loss, $actionMessage',
+        '当前版本的应用不支持文件 ${exception.fileName} 的新数据格式。'
+        '\n请将应用更新到最新版本。'
+        '\n\n为防止数据丢失，$actionMessage',
   );
 
   if (!GetPlatform.isWeb) {

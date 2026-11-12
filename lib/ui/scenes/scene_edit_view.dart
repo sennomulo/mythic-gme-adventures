@@ -26,7 +26,7 @@ class SceneEditView extends HookWidget {
     final saveTrigger = false.obs;
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Scene',
+      itemTypeLabel: '场景',
       canDelete: !isNew,
       onSave: () {
         _scene.summary = summaryController.text;
@@ -47,7 +47,7 @@ class SceneEditView extends HookWidget {
           TextFormField(
             controller: summaryController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Summary'),
+            decoration: const InputDecoration(labelText: '摘要'),
             autofocus: _scene.summary.isEmpty,
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
@@ -57,7 +57,7 @@ class SceneEditView extends HookWidget {
             fit: FlexFit.loose,
             child: RichTextEditor(
               controller: notesController,
-              title: 'Notes',
+              title: '笔记',
             ),
           ),
 
@@ -68,7 +68,7 @@ class SceneEditView extends HookWidget {
               padding: const EdgeInsets.only(top: 16.0),
               child: OutlinedButton.icon(
                 icon: const Icon(Icons.fullscreen),
-                label: const Text('Full screen edition'),
+                label: const Text('全屏编辑'),
                 onPressed: () {
                   final temporaryData = Scene(
                     summary: summaryController.text,

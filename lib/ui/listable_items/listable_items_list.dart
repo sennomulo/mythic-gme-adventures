@@ -71,7 +71,7 @@ abstract class ListableItemsListView<TItem extends ListableItem>
 
   String get itemTypeLabel;
 
-  String get listLabel => '${itemTypeLabel}s List';
+  String get listLabel => '${itemTypeLabel}列表';
 
   Future<void> createItem();
 
@@ -101,7 +101,7 @@ abstract class ListableItemsListView<TItem extends ListableItem>
                 () => IconButton.outlined(
                   onPressed: items.length > 1 ? () => _roll(context) : null,
                   icon: AppStyles.rollIcon,
-                  tooltip: 'Roll a $itemTypeLabel in this list',
+                  tooltip: '从此列表中掷一个$itemTypeLabel',
                 ),
               ),
             ),
@@ -110,7 +110,7 @@ abstract class ListableItemsListView<TItem extends ListableItem>
             IconButton.filled(
               onPressed: createItem,
               icon: const Icon(Icons.add),
-              tooltip: 'Create a $itemTypeLabel and adds it to this List',
+              tooltip: '新建$itemTypeLabel并加入此列表',
             ),
           ],
         ),
@@ -149,7 +149,7 @@ abstract class ListableItemsListView<TItem extends ListableItem>
     if (result != null) {
       Get.find<RollLogService>().addGenericRoll(
         title: listLabel,
-        value: result.choose ? 'Choose' : result.item!.value.name,
+        value: result.choose ? '自选' : result.item!.value.name,
         dieRoll: result.dieRoll,
       );
     }
@@ -223,7 +223,7 @@ abstract class ListableItemListItemView<TItem extends ListableItem>
                   ? () => _controller.removeFromItemsList(item)
                   : null,
               icon: const Icon(Icons.remove),
-              tooltip: 'Remove this $_itemTypeLabel from the List once',
+              tooltip: '将其从列表中移除一次',
             ),
 
             // number of items
@@ -240,7 +240,7 @@ abstract class ListableItemListItemView<TItem extends ListableItem>
                   ? () => _controller.addToItemsList(item)
                   : null,
               icon: const Icon(Icons.add),
-              tooltip: 'Add this $_itemTypeLabel to the List again',
+              tooltip: '再次将其加入列表',
             ),
           ],
         ),

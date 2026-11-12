@@ -115,7 +115,7 @@ class _MainRow extends StatelessWidget {
 
                 Widget entry = RollLookupEntryView(
                   value: '${index * 2 + 1} - ${index * 2 + 2}',
-                  label: name ?? 'Choose',
+                  label: name ?? '自选',
                   backgroundColor: backgroundColor,
                 );
 

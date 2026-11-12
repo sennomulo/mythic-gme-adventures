@@ -28,7 +28,7 @@ class FeatureEditView extends HookWidget {
     final saveTrigger = false.obs;
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Feature',
+      itemTypeLabel: '特征',
       canDelete: canDelete,
       saveTrigger: saveTrigger,
       onSave: () {
@@ -50,7 +50,7 @@ class FeatureEditView extends HookWidget {
           TextFormField(
             controller: nameController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Name'),
+            decoration: const InputDecoration(labelText: '名称'),
             autofocus: _feature.name.isEmpty,
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
@@ -61,7 +61,7 @@ class FeatureEditView extends HookWidget {
             fit: FlexFit.loose,
             child: RichTextEditor(
               controller: notesController,
-              title: 'Notes',
+              title: '笔记',
             ),
           ),
 
@@ -69,9 +69,9 @@ class FeatureEditView extends HookWidget {
           if (canDelete)
             BooleanSetting(
               setting: isArchived,
-              text: 'Archived',
+              text: '已归档',
               subtext:
-                  'Archiving a Feature excludes it from Random Event rolls',
+                  '归档后的特征不会出现在随机事件掷骰中',
               withTopPadding: true,
             ),
         ],

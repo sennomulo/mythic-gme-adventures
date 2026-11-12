@@ -66,7 +66,7 @@ class ScenesView extends GetView<ScenesService> {
             return icon;
           }),
           onPressed: _showKeyedScenes,
-          label: const Text('Keyed Scenes'),
+          label: const Text('插入场景'),
         ),
       );
     }
@@ -86,7 +86,7 @@ class ScenesView extends GetView<ScenesService> {
               onPressed: isPhysicalDiceModeEnabled
                   ? () => _showAdjustmentLookup(context)
                   : _rollAdjustment,
-              child: Text(dense ? 'Roll Adjust.' : 'Roll Adjustment'),
+              child: Text(dense ? '掷调整' : '掷场景调整'),
             ),
           ),
 
@@ -97,7 +97,7 @@ class ScenesView extends GetView<ScenesService> {
               onPressed: isPhysicalDiceModeEnabled
                   ? () => _showSceneTestLookup(context)
                   : _testScene,
-              child: Text(dense ? 'Test Scene' : 'Test Expected Scene'),
+              child: Text(dense ? '测试场景' : '测试预期场景'),
             ),
           ),
 
@@ -105,7 +105,7 @@ class ScenesView extends GetView<ScenesService> {
           IconButton.filled(
             onPressed: _create,
             icon: const Icon(Icons.add),
-            tooltip: 'Create a Scene',
+            tooltip: '新建场景',
           ),
         ],
       );
@@ -161,8 +161,8 @@ class ScenesView extends GetView<ScenesService> {
     if (dieRoll > chaosFactor) {
       // expected
       await Dialogs.showAlert(
-        title: 'Expected Scene',
-        message: 'The scene happens as expected.',
+        title: '预期场景',
+        message: '场景如预期发生。',
       );
     } else {
       final isPreparedAdventure = Get.find<AdventureService>()
@@ -170,10 +170,10 @@ class ScenesView extends GetView<ScenesService> {
 
       if (isPreparedAdventure) {
         await Dialogs.showAlert(
-          title: 'Random Event',
+          title: '随机事件',
           message:
-              'Your expectations are sightly altered.\n'
-              'A Random Event will be rolled.',
+              '预期被略微改变。\n'
+              '将掷出一个随机事件。',
         );
 
         rollRandomEvent();
@@ -181,19 +181,19 @@ class ScenesView extends GetView<ScenesService> {
         if (dieRoll.isOdd) {
           // altered
           await Dialogs.showAlert(
-            title: 'Altered Scene',
+            title: '变更场景',
             message:
-                'Your expectations are sightly altered.\n'
-                'You may consult the Fate Chart or the Meaning Tables.\n'
-                'You may also roll an Adjustment.',
+                '预期被略微改变。\n'
+                '你可以查询命运图表或意义表。\n'
+                '你也可以掷一次场景调整。',
           );
         } else {
           // interrupt
           await Dialogs.showAlert(
-            title: 'Interrupt Scene',
+            title: '中断场景',
             message:
-                'Mythic derails your expectations.\n'
-                'A Random Event will be rolled.',
+                'Mythic 彻底颠覆了你的预期。\n'
+                '将掷出一个随机事件。',
           );
 
           rollRandomEvent();
@@ -211,17 +211,17 @@ class ScenesView extends GetView<ScenesService> {
   void _rollAdjustment() {
     void addSceneAdjustmentRoll(int dieRoll) {
       final adjustment = switch (dieRoll) {
-        1 => 'Remove a Character',
-        2 => 'Add a Character',
-        3 => 'Reduce/Remove an Activity',
-        4 => 'Increase an Activity',
-        5 => 'Remove an Object',
-        6 => 'Add an Object',
-        _ => 'Make 2 Adjustments',
+        1 => '移除一个角色',
+        2 => '增加一个角色',
+        3 => '减弱/移除一个活动',
+        4 => '增强一个活动',
+        5 => '移除一个物品',
+        6 => '增加一个物品',
+        _ => '进行两次调整',
       };
 
       Get.find<RollLogService>().addGenericRoll(
-        title: 'Scene Adjustment',
+        title: '场景调整',
         value: adjustment,
         dieRoll: dieRoll,
       );
@@ -256,7 +256,7 @@ class ScenesView extends GetView<ScenesService> {
           child: Column(
             children: [
               // scenes
-              const Header('Keyed Scenes'),
+              const Header('插入场景'),
               const Expanded(child: KeyedScenesView()),
 
               // close
@@ -264,7 +264,7 @@ class ScenesView extends GetView<ScenesService> {
                 padding: const EdgeInsets.all(16.0),
                 child: OutlinedButton(
                   onPressed: () => Get.back<void>(),
-                  child: const Text('Close'),
+                  child: const Text('关闭'),
                 ),
               ),
             ],
@@ -302,7 +302,7 @@ class _SceneView extends GetView<ScenesService> {
             ? IconButton(
                 onPressed: _editFullscreen,
                 icon: const Icon(Icons.fullscreen),
-                tooltip: 'Full screen edition',
+                tooltip: '全屏编辑',
               )
             : null,
       ),

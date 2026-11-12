@@ -12,10 +12,10 @@ import 'adventure.dart';
 
 class AdventureEditView extends HookWidget {
   static final _fateChartTypeEntries = [
-    const DropdownMenuEntry(value: FateChartType.standard, label: 'Standard'),
-    const DropdownMenuEntry(value: FateChartType.mid, label: 'Mid'),
-    const DropdownMenuEntry(value: FateChartType.low, label: 'Low'),
-    const DropdownMenuEntry(value: FateChartType.none, label: 'None'),
+    const DropdownMenuEntry(value: FateChartType.standard, label: '标准'),
+    const DropdownMenuEntry(value: FateChartType.mid, label: '中等'),
+    const DropdownMenuEntry(value: FateChartType.low, label: '低'),
+    const DropdownMenuEntry(value: FateChartType.none, label: '无'),
   ];
 
   final AdventureService _adventure;
@@ -31,7 +31,7 @@ class AdventureEditView extends HookWidget {
     final saveTrigger = false.obs;
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Adventure',
+      itemTypeLabel: '冒险',
       canDelete: false,
       onSave: () {
         _adventure.name(nameController.text);
@@ -47,7 +47,7 @@ class AdventureEditView extends HookWidget {
           TextFormField(
             controller: nameController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Name'),
+            decoration: const InputDecoration(labelText: '名称'),
             autofocus: _adventure.name().isEmpty,
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
@@ -58,7 +58,7 @@ class AdventureEditView extends HookWidget {
               child: DropdownMenu<FateChartType>(
                 requestFocusOnTap: false,
                 initialSelection: chartType(),
-                label: const Text('Fate Chart'),
+                label: const Text('命运图表'),
                 dropdownMenuEntries: _fateChartTypeEntries,
                 onSelected: (value) {
                   chartType.value = value ?? FateChartType.standard;
@@ -68,11 +68,11 @@ class AdventureEditView extends HookWidget {
           ),
           BooleanSetting(
             setting: isPreparedAdventure,
-            text: 'Prepared Adventure',
+            text: '预设冒险',
             subtext:
-                'If checked, the Features list appears in the More tab,'
-                ' Random Events use the Event Focus table of Prepared Adventures,'
-                ' and altered/interrupt scenes are replaced with a Random Event.',
+                '勾选后，特征列表将显示在“更多”标签页中，'
+                '随机事件将使用预设冒险的事件焦点表，'
+                '且变更/中断场景会被随机事件取代。',
             withTopPadding: true,
           ),
         ],

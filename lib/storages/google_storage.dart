@@ -340,7 +340,7 @@ class GoogleStorage extends DataStorage with GoogleStorageLoggy {
       return await request(api);
     } on AccessDeniedException catch (e) {
       if (retryUnauthorized) {
-        loggy.debug('Access denied', e);
+        loggy.debug('访问被拒绝', e);
 
         await _authManager.clearAccessToken();
 
@@ -359,24 +359,24 @@ class GoogleStorage extends DataStorage with GoogleStorageLoggy {
 
       throw RemoteStorageAuthenticationException(_provider, filePath);
     } on GoogleSignInException catch (e) {
-      loggy.error('Sign-in error', e);
+      loggy.error('登录出错', e);
 
       await _authManager.signOut();
 
       throw RemoteStorageAuthenticationException(_provider, filePath);
     } on GoogleSignInNetworkException catch (e) {
-      loggy.error('Sign-in network error', e);
+      loggy.error('登录网络错误', e);
 
       throw RemoteStorageNetworkException(_provider, filePath);
     } on SocketException {
       throw RemoteStorageNetworkException(_provider, filePath);
     } on ServerRequestFailedException catch (e) {
-      loggy.error('Unexpected error', e);
+      loggy.error('意外错误', e);
       // TODO analyze status code
 
       throw RemoteStorageOperationException(_provider, filePath, e);
     } catch (e) {
-      loggy.error('Unexpected error', e);
+      loggy.error('意外错误', e);
 
       throw RemoteStorageOperationException(_provider, filePath, e);
     }
@@ -403,7 +403,7 @@ class GoogleStorage extends DataStorage with GoogleStorageLoggy {
 mixin GoogleStorageLoggy implements LoggyType {
   @override
   Loggy<GoogleStorageLoggy> get loggy =>
-      Loggy<GoogleStorageLoggy>('Google Storage');
+      Loggy<GoogleStorageLoggy>('Google 云端存储');
 }
 
 class _QueryHelper {

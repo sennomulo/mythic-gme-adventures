@@ -6,7 +6,7 @@ import '../listable_items/listable_items_view.dart';
 import 'character.dart';
 import 'character_edit_view.dart';
 
-const characterItemTypeLabel = 'Character';
+const characterItemTypeLabel = '角色';
 
 class CharactersView extends ListableItemsView<Character> {
   CharactersView({

@@ -24,7 +24,7 @@ class NoteEditView extends HookWidget {
     final saveTrigger = false.obs;
 
     return EditDialog<bool>(
-      itemTypeLabel: 'Note',
+      itemTypeLabel: '笔记',
       canDelete: !isNew,
       onSave: () {
         _note.title = titleController.text;
@@ -44,7 +44,7 @@ class NoteEditView extends HookWidget {
           TextFormField(
             controller: titleController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Title'),
+            decoration: const InputDecoration(labelText: '标题'),
             autofocus: _note.title.isEmpty,
             textCapitalization: TextCapitalization.sentences,
             onFieldSubmitted: (_) => EditDialog.triggerSave(saveTrigger),
@@ -54,7 +54,7 @@ class NoteEditView extends HookWidget {
             fit: FlexFit.loose,
             child: RichTextEditor(
               controller: contentController,
-              title: 'Content',
+              title: '内容',
             ),
           ),
 
@@ -65,7 +65,7 @@ class NoteEditView extends HookWidget {
               padding: const EdgeInsets.only(top: 16.0),
               child: OutlinedButton.icon(
                 icon: const Icon(Icons.fullscreen),
-                label: const Text('Full screen edition'),
+                label: const Text('全屏编辑'),
                 onPressed: () {
                   final temporaryData = Note(
                     titleController.text,

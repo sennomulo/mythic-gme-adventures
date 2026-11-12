@@ -1,7 +1,7 @@
 {
   "id": "idispatch.mythic_gme_adventures",
   "short_name": "Mythic GME Adventures",
-  "description": "Mythic GME Adventures is an App for managing adventures using the rules of Mythic Game Master Emulator, 2nd Edition.",
+  "description": "Mythic GME Adventures：使用《Mythic Game Master Emulator, 2nd Edition》规则管理冒险的应用。",
   "start_url": "..",
   "display": "standalone",
   "background_color": "#2f3066",

@@ -45,7 +45,7 @@ abstract class ListableItemsView<TItem extends ListableItem>
                   child: IconButton.outlined(
                     onPressed: canRoll ? _roll : null,
                     icon: AppStyles.rollIcon,
-                    tooltip: 'Roll a $itemTypeLabel in this list',
+                    tooltip: '从此列表中掷一个$itemTypeLabel',
                   ),
                 ),
 
@@ -53,7 +53,7 @@ abstract class ListableItemsView<TItem extends ListableItem>
               IconButton.filled(
                 onPressed: createItem,
                 icon: const Icon(Icons.add),
-                tooltip: 'Create a $itemTypeLabel',
+                tooltip: '新建$itemTypeLabel',
               ),
             ],
           );
@@ -87,7 +87,7 @@ abstract class ListableItemsView<TItem extends ListableItem>
     final dieRoll = rollDie(validItems.length);
 
     Get.find<RollLogService>().addGenericRoll(
-      title: '${itemTypeLabel}s',
+      title: itemTypeLabel,
       value: validItems[dieRoll - 1].value.name,
       dieRoll: dieRoll,
     );
@@ -139,8 +139,8 @@ abstract class ListableItemView<TItem extends ListableItem>
             onPressed: !isDeleted ? () => _addToList(context) : null,
             icon: const Icon(Icons.playlist_add),
             tooltip:
-                'Add this $_itemTypeLabel'
-                ' to the ${_itemTypeLabel}s List',
+                '将此$_itemTypeLabel'
+                '加入列表',
           );
         }
 
@@ -172,7 +172,7 @@ abstract class ListableItemView<TItem extends ListableItem>
     if (wasAdded && _showAddToListNotification) {
       showSnackBar(
         context,
-        '"${_item.value.name}" was added to the ${_itemTypeLabel}s List.',
+        '“${_item.value.name}”已加入${_itemTypeLabel}列表。',
       );
     }
   }

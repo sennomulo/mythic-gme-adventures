@@ -130,7 +130,7 @@ class MeaningTablesPersister {
 
     return _storage.loadJsonFiles([_directory], (filePath, content) {
       if (filePath.length == 2) {
-        logDebug('Loading table ${filePath.join('/')}');
+        logDebug('正在加载意义表 ${filePath.join('/')}');
 
         meaningTables.addTableFromJson(locale: filePath[0], json: content);
       }

@@ -21,7 +21,7 @@ class KeyedScenesView extends GetView<KeyedScenesService> {
             IconButton.filled(
               onPressed: _create,
               icon: const Icon(Icons.add),
-              tooltip: 'Create a Keyed Scene',
+              tooltip: '新建插入场景',
             ),
           ],
         ),

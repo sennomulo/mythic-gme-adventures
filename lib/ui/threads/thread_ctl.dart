@@ -130,7 +130,7 @@ class ThreadController extends GetxController {
   Future<void> rollDiscovery() async {
     final probability = await Get.dialog<Probability>(
       SimpleDialog(
-        title: const Text('Probability'),
+        title: const Text('概率'),
         children:
             [
                   FiftyFifty.instance,
@@ -175,33 +175,33 @@ class ThreadController extends GetxController {
 
     String message;
     if (dieRoll < 10) {
-      message = 'Progress +2';
+      message = '进度 +2';
       addProgress(2);
     } else if (dieRoll == 10) {
-      message = 'Flashpoint +2';
+      message = '闪点 +2';
       addFlashpoint(2);
     } else if (dieRoll < 15) {
-      message = 'Track +1';
+      message = '推进 +1';
       addProgress(1);
     } else if (dieRoll < 18) {
-      message = 'Progress +3';
+      message = '进度 +3';
       addProgress(3);
     } else if (dieRoll == 18) {
-      message = 'Flashpoint +3';
+      message = '闪点 +3';
       addFlashpoint(3);
     } else if (dieRoll == 19) {
-      message = 'Track +2';
+      message = '推进 +2';
       addProgress(2);
     } else if (dieRoll < 25) {
-      message = 'Strengthen Progress +1';
+      message = '巩固进度 +1';
       addProgress(1);
     } else {
-      message = 'Strengthen Progress +2';
+      message = '巩固进度 +2';
       addProgress(2);
     }
 
     Get.find<RollLogService>().addGenericRoll(
-      title: 'Thread Discovery Check',
+      title: '线索探索检定',
       value: message,
       dieRoll: dieRoll,
     );

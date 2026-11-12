@@ -99,8 +99,8 @@ class DiceRollerView extends HookWidget {
             onPressed: log.isNotEmpty
                 ? () async {
                     if (await Dialogs.showConfirmation(
-                      title: 'Clear the log?',
-                      message: 'The log entries will be permanently deleted.',
+                      title: '清空记录？',
+                      message: '记录条目将被永久删除。',
                     )) {
                       controller.clear();
                     }
@@ -157,7 +157,7 @@ class _RollerView extends GetView<DiceRollerService> {
                     OutlinedButton(
                       onPressed: () async {
                         final newValue = await Dialogs.showNumberPicker(
-                          title: 'Number of dice',
+                          title: '骰子数量',
                         );
                         if (newValue != null) {
                           controller.setDiceCount(newValue);
@@ -177,7 +177,7 @@ class _RollerView extends GetView<DiceRollerService> {
                     OutlinedButton(
                       onPressed: () async {
                         final newValue = await Dialogs.showNumberPicker(
-                          title: 'Number of faces',
+                          title: '骰子面数',
                         );
                         if (newValue != null) {
                           controller.setFaces(newValue);
@@ -198,7 +198,7 @@ class _RollerView extends GetView<DiceRollerService> {
                       style: modifierButtonStyle,
                       onPressed: () async {
                         final newValue = await Dialogs.showNumberPicker(
-                          title: 'Modifier',
+                          title: '修正值',
                         );
                         if (newValue != null) {
                           controller.setModifier(newValue);
@@ -216,7 +216,7 @@ class _RollerView extends GetView<DiceRollerService> {
             IconButton.filled(
               onPressed: controller.roll,
               icon: AppStyles.rollIcon,
-              tooltip: 'Roll',
+              tooltip: '掷骰',
             ),
           ],
         ),
@@ -314,7 +314,7 @@ class _DiceRollResult extends GetView<DiceRollerService> {
             IconButton.outlined(
               onPressed: () => controller.rollExisting(_diceRoll),
               icon: AppStyles.rollIcon,
-              tooltip: 'Reroll',
+              tooltip: '重掷',
             ),
           ],
         ),

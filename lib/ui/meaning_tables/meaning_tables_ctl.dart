@@ -73,12 +73,12 @@ class MeaningTablesController extends GetxController {
   Future<void> chooseFavorite(MeaningTable table) async {
     final choice = await Get.dialog<String>(
       SimpleDialog(
-        title: const Text('Set favorite for'),
+        title: const Text('设置收藏范围：'),
         children:
             [
-                  ('global', 'All Adventures'),
-                  ('adventure', 'The current Adventure only'),
-                  ('none', 'Not favorite'),
+                  ('global', '所有冒险'),
+                  ('adventure', '仅当前冒险'),
+                  ('none', '取消收藏'),
                 ]
                 .map(
                   (e) => SimpleDialogOption(
@@ -155,7 +155,7 @@ class MeaningTablesController extends GetxController {
     Get.find<LayoutController>().meaningTableDetails(table);
   }
 
-  Widget getHeader() => const Header('Meaning Tables');
+  Widget getHeader() => const Header('意义表');
 
   /// The buttons for each table.
   ///

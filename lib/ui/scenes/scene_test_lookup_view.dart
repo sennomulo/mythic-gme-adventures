@@ -23,7 +23,7 @@ class SceneTestLookupView extends StatelessWidget {
       entries.add(
         RollLookupEntry(
           value: '1 - $chaosFactor',
-          label: 'Random Event',
+          label: '随机事件',
         ),
       );
     } else {
@@ -31,7 +31,7 @@ class SceneTestLookupView extends StatelessWidget {
         entries.add(
           RollLookupEntry(
             value: (i + 1).toString(),
-            label: i.isEven ? 'Altered Scene' : 'Interrupt Scene',
+            label: i.isEven ? '变更场景' : '中断场景',
           ),
         );
       }
@@ -40,12 +40,12 @@ class SceneTestLookupView extends StatelessWidget {
     entries.add(
       RollLookupEntry(
         value: chaosFactor == 9 ? '10' : '${chaosFactor + 1} - 10',
-        label: 'Expected Scene',
+        label: '预期场景',
       ),
     );
 
     return RollLookupView(
-      header: 'Test Expected Scene - 1d10',
+      header: '测试预期场景 - 1d10',
       rollColors: AppStyles.genericColors,
       entries: entries,
       additionalContent: Column(
@@ -57,7 +57,7 @@ class SceneTestLookupView extends StatelessWidget {
 
               showRandomEventLookup(context);
             },
-            child: const Text('ROLL RANDOM EVENT'),
+            child: const Text('掷随机事件'),
           ),
 
           // roll adjustment
@@ -69,7 +69,7 @@ class SceneTestLookupView extends StatelessWidget {
 
               showAppModalBottomSheet<void>(context, content);
             },
-            child: const Text('ROLL ADJUSTMENT'),
+            child: const Text('掷场景调整'),
           ),
         ],
       ),

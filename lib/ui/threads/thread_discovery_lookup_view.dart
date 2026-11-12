@@ -16,47 +16,47 @@ class ThreadDiscoveryLookupView extends StatelessWidget {
     final controller = Get.find<ThreadController>(tag: thread.toTag());
 
     return RollLookupView(
-      header: 'Thread Discovery - 1d10+${thread.progress()}',
+      header: '线索探索 - 1d10+${thread.progress()}',
       rollColors: AppStyles.genericColors,
       entries: [
         RollLookupEntry(
           value: '1 - 9',
-          label: 'Progress +2',
+          label: '进度 +2',
           onApply: () => controller.addProgress(2),
         ),
         RollLookupEntry(
           value: '10',
-          label: 'Flashpoint +2',
+          label: '闪点 +2',
           onApply: () => controller.addFlashpoint(2),
         ),
         RollLookupEntry(
           value: '11 - 14',
-          label: 'Track +1',
+          label: '推进 +1',
           onApply: () => controller.addProgress(1),
         ),
         RollLookupEntry(
           value: '15 - 17',
-          label: 'Progress +3',
+          label: '进度 +3',
           onApply: () => controller.addProgress(3),
         ),
         RollLookupEntry(
           value: '18',
-          label: 'Flashpoint +3',
+          label: '闪点 +3',
           onApply: () => controller.addFlashpoint(3),
         ),
         RollLookupEntry(
           value: '19',
-          label: 'Track +2',
+          label: '推进 +2',
           onApply: () => controller.addProgress(2),
         ),
         RollLookupEntry(
           value: '20 - 24',
-          label: 'Strengthen Progress +1',
+          label: '巩固进度 +1',
           onApply: () => controller.addProgress(1),
         ),
         RollLookupEntry(
           value: '25+',
-          label: 'Strengthen Progress +2',
+          label: '巩固进度 +2',
           onApply: () => controller.addProgress(2),
         ),
       ],

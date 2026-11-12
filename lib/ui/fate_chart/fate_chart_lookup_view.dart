@@ -32,7 +32,7 @@ class FateChartLookupView extends StatelessWidget {
 
           showAppModalBottomSheet<void>(context, content);
         },
-        child: const Text('ROLL DISCOVERY'),
+        child: const Text('掷探索检定'),
       );
     } else {
       additionalContent = TextButton(
@@ -41,7 +41,7 @@ class FateChartLookupView extends StatelessWidget {
 
           showRandomEventLookup(context);
         },
-        child: const Text('ROLL RANDOM EVENT'),
+        child: const Text('掷随机事件'),
       );
     }
 
@@ -52,26 +52,26 @@ class FateChartLookupView extends StatelessWidget {
         if (outcomeProbability.extremeYes > 0)
           RollLookupEntry(
             value: _getValueLabel(1, outcomeProbability.extremeYes),
-            label: 'Exceptional Yes',
+            label: '非常肯定',
           ),
         RollLookupEntry(
           value: _getValueLabel(
             outcomeProbability.extremeYes + 1,
             outcomeProbability.threshold,
           ),
-          label: 'Yes',
+          label: '肯定',
         ),
         RollLookupEntry(
           value: _getValueLabel(
             outcomeProbability.threshold + 1,
             outcomeProbability.extremeNo - 1,
           ),
-          label: 'No',
+          label: '否定',
         ),
         if (outcomeProbability.extremeNo <= 100)
           RollLookupEntry(
             value: _getValueLabel(outcomeProbability.extremeNo, 100),
-            label: 'Exceptional No',
+            label: '非常否定',
           ),
       ],
       additionalContent: additionalContent,

@@ -117,11 +117,11 @@ class AdventureInfoController extends GetxController {
 
     if (!preferences.physicalDiceModeExplained.value) {
       Dialogs.showAlert(
-        title: 'Physical Dice Mode',
+        title: '实体骰模式',
         message:
-            'When Physical Dice Mode is enabled,'
-            ' rolling in the App will not roll dice for you but open the lookup table for the roll.'
-            ' You can then roll physical dice and lookup the result there.',
+            '启用实体骰模式后，'
+            '应用内掷骰不会替你掷骰，而是打开对应的查询表。'
+            '你可以自己掷实体骰，然后在查询表中查找结果。',
       );
 
       preferences.physicalDiceModeExplained(true);
@@ -158,7 +158,7 @@ class AdventureInfoController extends GetxController {
     await saveTextFile(
       fileContent,
       fileName: fileName,
-      dialogTitle: 'Backup Adventure',
+      dialogTitle: '备份冒险',
     );
   }
 
@@ -190,7 +190,7 @@ class AdventureInfoController extends GetxController {
     // scenes
     final scenes = Get.find<ScenesService>().scenes();
     if (scenes.isNotEmpty) {
-      addTitle('Scenes');
+      addTitle('场景');
       for (var item in scenes.map((e) => e())) {
         addItem(item.summary, null, richTextToPlainText(item.notes));
       }
@@ -199,7 +199,7 @@ class AdventureInfoController extends GetxController {
     // keyed scenes
     final keyedScenes = Get.find<KeyedScenesService>().scenes();
     if (keyedScenes.isNotEmpty) {
-      addTitle('Keyed Scenes');
+      addTitle('插入场景');
       for (var item in keyedScenes.map((e) => e())) {
         addItem(item.trigger, null, item.event);
       }
@@ -208,7 +208,7 @@ class AdventureInfoController extends GetxController {
     // threads
     final threads = Get.find<ThreadsService>().items();
     if (threads.isNotEmpty) {
-      addTitle('Threads');
+      addTitle('线索');
       for (var item in threads.map((e) => e()).sorted((a, b) => a.id - b.id)) {
         addItem(item.name, item.summary, richTextToPlainText(item.notes));
       }
@@ -217,7 +217,7 @@ class AdventureInfoController extends GetxController {
     // characters
     final characters = Get.find<CharactersService>().items();
     if (characters.isNotEmpty) {
-      addTitle('Characters');
+      addTitle('角色');
       for (var item
           in characters.map((e) => e()).sorted((a, b) => a.id - b.id)) {
         addItem(item.name, item.summary, richTextToPlainText(item.notes));
@@ -227,7 +227,7 @@ class AdventureInfoController extends GetxController {
     // features
     final features = Get.find<FeaturesService>().features();
     if (features.isNotEmpty) {
-      addTitle('Features');
+      addTitle('特征');
       for (var item in features.map((e) => e()).sorted((a, b) => a.id - b.id)) {
         addItem(item.name, null, richTextToPlainText(item.notes));
       }
@@ -237,7 +237,7 @@ class AdventureInfoController extends GetxController {
     final playerCharacters = Get.find<PlayerCharactersService>()
         .playerCharacters();
     if (playerCharacters.isNotEmpty) {
-      addTitle('Player Characters');
+      addTitle('玩家角色');
       for (var item in playerCharacters.map((e) => e())) {
         addItem(item.name, null, richTextToPlainText(item.notes));
       }
@@ -246,7 +246,7 @@ class AdventureInfoController extends GetxController {
     // notes
     final notes = Get.find<NotesService>().notes();
     if (notes.isNotEmpty) {
-      addTitle('Notes');
+      addTitle('笔记');
       for (var item in notes.map((e) => e())) {
         addItem(item.title, null, richTextToPlainText(item.content));
       }
@@ -258,7 +258,7 @@ class AdventureInfoController extends GetxController {
     await saveTextFile(
       text,
       fileName: fileName,
-      dialogTitle: 'Export Adventure',
+      dialogTitle: '导出冒险',
     );
   }
 
@@ -279,6 +279,6 @@ class AdventureInfoController extends GetxController {
 
     final saveDate = DateTime.fromMillisecondsSinceEpoch(saveTimestamp);
 
-    return 'Saved ${saveDate.elapsedFromNow()}';
+    return '保存于 ${saveDate.elapsedFromNow()}';
   }
 }

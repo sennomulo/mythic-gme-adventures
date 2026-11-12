@@ -126,8 +126,8 @@ class _LargeLayoutOracles extends GetView<LayoutController> {
     return LayoutTabBar(
       tabIndex: controller.oraclesTabIndex,
       tabs: const [
-        Tab(text: 'TABLES'),
-        Tab(text: 'DICE ROLLER'),
+        Tab(text: '意义表'),
+        Tab(text: '掷骰器'),
       ],
       children: [
         // tables
@@ -206,11 +206,11 @@ class _LargeLayoutTabs extends HookWidget {
           controller: tabController,
           onTap: (value) => layoutController.largeLayoutTabIndex = value,
           tabs: [
-            const Tab(text: 'SCENES'),
-            const Tab(text: 'THREADS'),
-            const Tab(text: 'CHARACTERS'),
-            if (hasFeatures) const Tab(text: 'FEATURES'),
-            const Tab(text: 'PLAYERS'),
+            const Tab(text: '场景'),
+            const Tab(text: '线索'),
+            const Tab(text: '角色'),
+            if (hasFeatures) const Tab(text: '特征'),
+            const Tab(text: '玩家角色'),
             const Tab(text: 'NOTES'),
           ],
         ),

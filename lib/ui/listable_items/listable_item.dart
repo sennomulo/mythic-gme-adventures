@@ -107,8 +107,8 @@ class ListableItemsService<TItem extends ListableItem> extends GetxService
         if (Get.context != null) {
           showSnackBar(
             Get.context!,
-            'The rules recommend not having more than ${GlobalSettingsService.maxNumberOfItemsInList} identical items in a List.'
-            '\nYou can change this in the Global Settings.',
+            '规则建议列表中相同条目不要超过 ${GlobalSettingsService.maxNumberOfItemsInList} 个。'
+            '\n你可以在全局设置中更改此限制。',
           );
         }
 

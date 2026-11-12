@@ -139,8 +139,8 @@ class RollLogView extends HookWidget {
             onPressed: log.isNotEmpty
                 ? () async {
                     if (await Dialogs.showConfirmation(
-                      title: 'Clear the log?',
-                      message: 'The log entries will be permanently deleted.',
+                      title: '清空记录？',
+                      message: '记录条目将被永久删除。',
                     )) {
                       controller.clear();
                     }
@@ -170,10 +170,10 @@ class _FateChartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final outcomeText = switch (_roll.outcome) {
-      FateChartRollOutcome.extremeNo => 'Exceptional No',
-      FateChartRollOutcome.no => 'No',
-      FateChartRollOutcome.yes => 'Yes',
-      FateChartRollOutcome.extremeYes => 'Exceptional Yes',
+      FateChartRollOutcome.extremeNo => '非常否定',
+      FateChartRollOutcome.no => '否定',
+      FateChartRollOutcome.yes => '肯定',
+      FateChartRollOutcome.extremeYes => '非常肯定',
     };
 
     return Column(
@@ -184,7 +184,7 @@ class _FateChartView extends StatelessWidget {
         if (_roll.hasEvent)
           const TextButton(
             onPressed: rollRandomEvent,
-            child: Text('ROLL RANDOM EVENT'),
+            child: Text('掷随机事件'),
           ),
       ],
     );
@@ -201,7 +201,7 @@ class _RandomEventView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        RollHeader('Random Event', AppStyles.randomEventColors),
+        RollHeader('随机事件', AppStyles.randomEventColors),
         _Result(_roll.focus.name, _roll.dieRoll, AppStyles.randomEventColors),
 
         // event target
@@ -272,7 +272,7 @@ class _MeaningTableView extends GetView<MeaningTablesService> {
     );
 
     if (context.mounted) {
-      showSnackBar(context, 'Result copied to the clipboard');
+      showSnackBar(context, '结果已复制到剪贴板');
     }
   }
 }

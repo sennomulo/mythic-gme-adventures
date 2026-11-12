@@ -64,14 +64,14 @@ class NoteEditPageView extends HookWidget {
           TextFormField(
             controller: titleController,
             validator: validateNotEmpty,
-            decoration: const InputDecoration(labelText: 'Title'),
+            decoration: const InputDecoration(labelText: '标题'),
             textCapitalization: TextCapitalization.sentences,
           ),
           const SizedBox(height: 16),
           Expanded(
             child: RichTextEditor(
               controller: contentController,
-              title: 'Content',
+              title: '内容',
               expands: true,
             ),
           ),
@@ -93,8 +93,8 @@ class NoteEditPageView extends HookWidget {
                     if (title != controller.editedData.title ||
                         content != controller.editedData.content) {
                       if (!await Dialogs.showConfirmation(
-                        title: 'Close without saving',
-                        message: 'You have unsaved changes.\nClose anyway?',
+                        title: '不保存直接关闭',
+                        message: '有未保存的修改。\n确定要关闭吗？',
                       )) {
                         return;
                       }
@@ -102,7 +102,7 @@ class NoteEditPageView extends HookWidget {
 
                     controller.close();
                   },
-                  child: const Text('Close'),
+                  child: const Text('关闭'),
                 ),
 
                 const SizedBox(width: 8.0),
@@ -117,7 +117,7 @@ class NoteEditPageView extends HookWidget {
                       );
                     }
                   },
-                  child: const Text('Save'),
+                  child: const Text('保存'),
                 ),
               ],
             ),

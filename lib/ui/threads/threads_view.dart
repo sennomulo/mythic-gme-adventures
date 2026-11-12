@@ -7,7 +7,7 @@ import 'thread.dart';
 import 'thread_edit_view.dart';
 import 'thread_progress_view.dart';
 
-const threadItemTypeLabel = 'Thread';
+const threadItemTypeLabel = '线索';
 
 class ThreadsView extends ListableItemsView<Thread> {
   ThreadsView({

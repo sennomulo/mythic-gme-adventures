@@ -41,7 +41,7 @@ class _CharacterComplementEditView extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: OutlinedButton(
         onPressed: rollTraits,
-        child: const Text('Roll traits'),
+        child: const Text('掷特征'),
       ),
     );
   }
@@ -50,7 +50,7 @@ class _CharacterComplementEditView extends StatelessWidget {
     final selectedTables = <MeaningTable>{};
 
     if (await Dialogs.showValuePicker<bool>(
-          title: 'Select Meaning Tables',
+          title: '选择意义表',
           child: _TablesPicker(selectedTables),
           onSave: () => Get.back(result: true),
         ) ??

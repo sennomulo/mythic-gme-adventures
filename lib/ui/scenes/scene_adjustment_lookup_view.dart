@@ -9,16 +9,16 @@ class SceneAdjustmentLookupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RollLookupView(
-      header: 'Scene Adjustment - 1d10',
+      header: '场景调整 - 1d10',
       rollColors: AppStyles.genericColors,
       entries: const [
-        RollLookupEntry(value: '1', label: 'Remove a Character'),
-        RollLookupEntry(value: '2', label: 'Add a Character'),
-        RollLookupEntry(value: '3', label: 'Reduce/Remove an Activity'),
-        RollLookupEntry(value: '4', label: 'Increase an Activity'),
-        RollLookupEntry(value: '5', label: 'Remove an Object'),
-        RollLookupEntry(value: '6', label: 'Add an Object'),
-        RollLookupEntry(value: '7 - 10', label: 'Make 2 Adjustments'),
+        RollLookupEntry(value: '1', label: '移除一个角色'),
+        RollLookupEntry(value: '2', label: '增加一个角色'),
+        RollLookupEntry(value: '3', label: '减弱/移除一个活动'),
+        RollLookupEntry(value: '4', label: '增强一个活动'),
+        RollLookupEntry(value: '5', label: '移除一个物品'),
+        RollLookupEntry(value: '6', label: '增加一个物品'),
+        RollLookupEntry(value: '7 - 10', label: '进行两次调整'),
       ],
     );
   }

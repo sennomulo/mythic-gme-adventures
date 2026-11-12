@@ -22,7 +22,7 @@ class RollLogOrLookupView extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Center(
               child: Text(
-                'Click on a Meaning Table to display its content here',
+                '点击某个意义表，其内容将显示在此处',
                 textAlign: TextAlign.center,
               ),
             ),

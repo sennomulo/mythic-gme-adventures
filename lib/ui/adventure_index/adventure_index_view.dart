@@ -67,7 +67,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              'Click the "+" button above to create an Adventure',
+                              '点击上方的“+”按钮新建冒险',
                             ),
                           ),
                         );
@@ -78,7 +78,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                         final Widget listView = Column(
                           children: [
                             // header
-                            const Header('Adventures'),
+                            const Header('冒险'),
                             ButtonRow(
                               children: [
                                 // import meaning tables
@@ -105,7 +105,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                                     }
                                                   : null,
                                               child: const Text(
-                                                'Custom Meaning Tables',
+                                                '自定义意义表',
                                               ),
                                             );
                                           },
@@ -116,7 +116,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                           ),
                                           onPressed: controller
                                               .importLocalCustomMeaningTables,
-                                          child: const Text('Import tables'),
+                                          child: const Text('导入意义表'),
                                         ),
                                         MenuItemButton(
                                           leadingIcon: const Icon(
@@ -124,7 +124,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                           ),
                                           onPressed: controller
                                               .deleteLocalCustomMeaningTables,
-                                          child: const Text('Delete tables'),
+                                          child: const Text('删除意义表'),
                                         ),
                                       ],
                                     ),
@@ -135,7 +135,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                   Padding(
                                     padding: const EdgeInsets.only(right: 8.0),
                                     child: IconButton.outlined(
-                                      tooltip: 'Backup local Adventures',
+                                      tooltip: '备份本地冒险',
                                       onPressed: !controller.status().isLoading
                                           ? controller.backupLocalAdventures
                                           : null,
@@ -160,7 +160,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                               Icons.cloud_sync_outlined,
                                             ),
                                             tooltip:
-                                                'Synchronize local and online storages',
+                                                '同步本地与线上存储',
                                           ),
                                   ),
 
@@ -170,7 +170,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                       ? _create
                                       : null,
                                   icon: const Icon(Icons.add),
-                                  tooltip: 'Create an Adventure',
+                                  tooltip: '新建冒险',
                                 ),
                               ],
                             ),
@@ -195,7 +195,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                 children: [
                                   Text(
                                     controller.status().errorMessage ??
-                                        'Unexpected error.',
+                                        '发生意外错误。',
                                     style: TextStyle(
                                       color: theme.colorScheme.onErrorContainer,
                                     ),
@@ -204,7 +204,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FilledButton(
                                       onPressed: controller.reload,
-                                      child: const Text('Retry'),
+                                      child: const Text('重试'),
                                     ),
                                   ),
                                 ],
@@ -248,7 +248,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                   ),
                                   const Padding(
                                     padding: EdgeInsets.only(left: 4),
-                                    child: Text('Use Google Drive'),
+                                    child: Text('使用 Google Drive'),
                                   ),
                                 ],
                               ),
@@ -258,7 +258,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                 TextButton.icon(
                                   onPressed: controller.googleSignOut,
                                   icon: const Icon(Icons.logout),
-                                  label: const Text('Sign out'),
+                                  label: const Text('退出登录'),
                                 ),
                             ],
                           ),
@@ -268,7 +268,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Please read the ',
+                                    text: '请阅读',
                                     style: SubLabel.getTextStyle(theme),
                                   ),
                                   getUserManualLink(
@@ -276,7 +276,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                     textStyle: SubLabel.getTextStyle(theme),
                                   ),
                                   TextSpan(
-                                    text: ' to understand how storages work.',
+                                    text: '，了解存储机制的工作方式。',
                                     style: SubLabel.getTextStyle(theme),
                                   ),
                                 ],
@@ -292,7 +292,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                   // meaning tables
                                   Row(
                                     children: [
-                                      const Text('Custom Meaning Tables'),
+                                      const Text('自定义意义表'),
 
                                       // upload
                                       Padding(
@@ -317,7 +317,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text('Disable local storage'),
+                                      const Text('禁用本地存储'),
                                       Switch.adaptive(
                                         value: !_preferences
                                             .enableLocalStorage(),
@@ -329,9 +329,9 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     child: Text(
-                                      '${GetPlatform.isWeb ? 'It is mandatory on iOS: local storage does not work currently.\n' : ''}'
-                                      'This might be useful if you want to make the online version of an Adventure'
-                                      ' more recent than its local version.',
+                                      '${GetPlatform.isWeb ? '在 iOS 上此项为必选：当前本地存储无法使用。\n' : ''}'
+                                      '如果你想让线上版本的冒险比本地版本更新，'
+                                      '此选项可能有用。',
                                       style: theme.textTheme.labelMedium,
                                     ),
                                   ),
@@ -351,7 +351,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
                       padding: const EdgeInsets.all(8),
                       child: OutlinedButton(
                         onPressed: controller.showPreferences,
-                        child: const Text('Preferences'),
+                        child: const Text('偏好设置'),
                       ),
                     ),
                   ),
@@ -408,7 +408,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
               ),
             )
           : IconButton.outlined(
-              tooltip: 'Upload Custom Meaning Tables to the online storage',
+              tooltip: '将自定义意义表上传到线上存储',
               onPressed: controller.isMeaningTableDownloading()
                   ? null
                   : controller.uploadMeaningTables,
@@ -428,7 +428,7 @@ class AdventureIndexView extends GetView<AdventureIndexController> {
               ),
             )
           : IconButton.outlined(
-              tooltip: 'Download Custom Meaning Tables from the online storage',
+              tooltip: '从线上存储下载自定义意义表',
               onPressed: controller.isMeaningTableUploading()
                   ? null
                   : () => controller.downloadMeaningTables(),
@@ -460,7 +460,7 @@ class _IndexAdventureView extends GetView<AdventureIndexController> {
               MenuItemButton(
                 onPressed: _restoreAdventure,
                 leadingIcon: const Icon(Icons.restore),
-                child: const Text('Restore'),
+                child: const Text('恢复'),
               ),
 
               // delete
@@ -470,7 +470,7 @@ class _IndexAdventureView extends GetView<AdventureIndexController> {
                   Icons.delete_forever,
                   color: theme.colorScheme.error,
                 ),
-                child: const Text('Delete'),
+                child: const Text('删除'),
               ),
             ])
           : null,
@@ -481,7 +481,7 @@ class _IndexAdventureView extends GetView<AdventureIndexController> {
   }
 
   Future<void> _restoreAdventure() async {
-    final json = await pickFileAsJson(dialogTitle: 'Adventure file');
+    final json = await pickFileAsJson(dialogTitle: '冒险文件');
     if (json == null) return;
 
     return controller.restoreAdventure(json, _adventure);
