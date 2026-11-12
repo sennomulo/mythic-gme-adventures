@@ -54,3 +54,15 @@ flutter:
     - assets/meaning_tables/pt/
     - assets/meaning_tables/zh/
     - assets/google_fonts/
+
+  fonts:
+    - family: Noto Sans SC
+      fonts:
+        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+          weight: 400
+        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+          weight: 500
+        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+          weight: 600
+        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+          weight: 700

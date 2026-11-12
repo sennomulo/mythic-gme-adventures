@@ -153,6 +153,10 @@ final _genericColorsDark = RollColors(
   header: _genericColorsLight.background,
 );
 
+/// Font used as a fallback for glyphs (e.g. Chinese) missing
+/// from the Latin fonts bundled with the App (Rubik, Noto Sans).
+const kChineseFontFallback = ['Noto Sans SC'];
+
 ThemeData _buildTheme(ColorScheme colorScheme) {
   final theme = ThemeData(
     colorScheme: colorScheme,
@@ -186,5 +190,7 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
     ),
   );
 
-  return theme.copyWith(textTheme: textTheme);
+  return theme.copyWith(
+    textTheme: textTheme.apply(fontFamilyFallback: kChineseFontFallback),
+  );
 }
