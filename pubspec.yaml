@@ -58,11 +58,11 @@ flutter:
   fonts:
     - family: Noto Sans SC
       fonts:
-        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+        - asset: assets/google_fonts/NotoSansSC-Medium.ttf
           weight: 400
-        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+        - asset: assets/google_fonts/NotoSansSC-Medium.ttf
           weight: 500
-        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+        - asset: assets/google_fonts/NotoSansSC-Bold.ttf
           weight: 600
-        - asset: assets/google_fonts/NotoSansSC-VF.ttf
+        - asset: assets/google_fonts/NotoSansSC-Bold.ttf
           weight: 700
