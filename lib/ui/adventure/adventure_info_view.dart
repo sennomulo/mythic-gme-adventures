@@ -253,6 +253,12 @@ class _AdventureActionsButton extends GetView<AdventureInfoController> {
                             '\n'
                             '\nThe Chinese translations are provided by sennomulo.'
                             '\n'
+                            '\nThis app is an unofficial Chinese localization fork '
+                            'of Mythic GME Adventures by idispatch75, distributed '
+                            'for free for non-commercial purposes. Find the '
+                            'original project at github.com/idispatch75/'
+                            'mythic-gme-adventures.'
+                            '\n'
                             '\nThe App icon was created by Muhammad Miftakhul Rizky'
                             ' from thenounproject.com (CC BY 3.0).',
                             style: theme.textTheme.bodySmall,

@@ -1,4 +1,12 @@
-# Mythic GME Adventures
+# Mythic GME Adventures (Chinese Localization / 中文本地化版)
+
+> **This is an unofficial fork** of [Mythic GME Adventures](https://github.com/idispatch75/mythic-gme-adventures) by [idispatch75](https://github.com/idispatch75), maintained by [sennomulo](https://github.com/sennomulo) for the sole purpose of providing a Chinese localization (UI, rules help, and meaning tables). It is a non-commercial project distributed for free; all credit for the original app belongs to the upstream author.
+>
+> **本项目为非官方中文本地化分支**，基于 idispatch75 开发的 Mythic GME Adventures（单人跑团应用，遵循 Mythic GME 第二版规则）。本项目仅供学习交流、免费分发，不作任何商业用途；原应用的一切权利归原作者所有。
+>
+> - 原版项目：https://github.com/idispatch75/mythic-gme-adventures
+> - 原版官网与用户手册：https://idispatch75.github.io/mythic-gme-adventures/
+> - 中文版下载：[Releases](https://github.com/sennomulo/mythic-gme-adventures/releases)
 
 **Mythic GME Adventures** is an App for managing adventures using the rules of [Mythic Game Master Emulator, 2nd Edition](https://wordmillgames.com/mythic.html).
 
@@ -16,7 +24,7 @@ Features:
 - Export your adventure to a text file: you can format it properly in your text editor of choice
 - Physical dice mode: switch to this mode to roll the dice yourself and lookup the result in the App
 
-Available on [Windows](https://github.com/idispatch75/mythic-gme-adventures/releases), [Android](https://play.google.com/store/apps/details?id=idispatch.mythic_gme_adventures) and [Web](https://mythic-gme-adventures.idispatch.ovh).
+Available on [Windows](https://github.com/sennomulo/mythic-gme-adventures/releases), [Android](https://github.com/sennomulo/mythic-gme-adventures/releases) and [Web](https://github.com/sennomulo/mythic-gme-adventures/releases). Upstream (English) releases: [Windows](https://github.com/idispatch75/mythic-gme-adventures/releases), [Android](https://play.google.com/store/apps/details?id=idispatch.mythic_gme_adventures) and [Web](https://mythic-gme-adventures.idispatch.ovh).
 
 The web version can be "installed" as an App on iOS and any desktop.  
 Please refer to the [User Manual](https://idispatch75.github.io/mythic-gme-adventures/user_manual/#web-app) for browser compatibility.
